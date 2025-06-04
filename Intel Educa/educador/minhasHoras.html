@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intel Educa | Minhas Horas</title>
+  <style>
+    :root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --azul3: #e3f2fd;
+      --branco: #ffffff;
+      --cinza: #f4f4f4;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: var(--cinza);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: white;
+      color: var(--azul1);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #ddd;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px var(--sombra);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--azul1);
+      margin-bottom: 30px;
+    }
+
+    .info-box {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .info {
+      background-color: var(--azul3);
+      padding: 20px;
+      margin: 15px;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 2px 8px var(--sombra);
+      transition: transform 0.3s ease;
+    }
+
+    .info:hover {
+      transform: scale(1.05);
+    }
+
+    .info h2 {
+      color: var(--azul1);
+      font-size: 24px;
+    }
+
+    .info p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .info-box {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .info {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="dashboard.html"><button class="logout">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <h1>📊 Minhas Horas Complementares</h1>
+
+    <div class="info-box">
+      <div class="info">
+        <h2>12h</h2>
+        <p>Horas transmitidas ao vivo</p>
+      </div>
+
+
+      <!--
+
+      Esta difrente por conta dos AD no meio da live
+      -->
+      <div class="info">
+        <h2>8h</h2>
+        <p>Horas já abatidas</p>
+      </div>
+
+      <div class="info">
+        <h2>300h</h2>
+        <p>Horas restantes</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Intel Educa | Estudar Matérias</title>
+  <style>
+    :root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --azul-claro: #e3f2fd;
+      --branco: #ffffff;
+      --cinza: #f4f4f4;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--cinza);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    header .logo {
+      font-weight: bold;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    header a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: var(--azul1);
+    }
+
+    .materias {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .materia-card {
+      background-color: var(--branco);
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px var(--sombra);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .materia-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .materia-card h2 {
+      font-size: 20px;
+      color: var(--azul1);
+      margin-bottom: 10px;
+    }
+
+    .materia-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+      background-color: var(--branco);
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      header a {
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard-estudante.html">Voltar ao Painel</a>
+  </header>
+
+  <div class="container">
+    <h1>Matérias</h1>
+    <div class="materias">
+      <div class="materia-card"><h2>Matemática</h2><p>Álgebra, funções, estatística, geometria e mais.</p></div>
+      <div class="materia-card"><h2>Física</h2><p>Mecânica, eletricidade, óptica, termodinâmica e leis da física.</p></div>
+      <div class="materia-card"><h2>Química</h2><p>Físico-química, orgânica, inorgânica, e reações químicas.</p></div>
+      <div class="materia-card"><h2>Biologia</h2><p>Genética, ecologia, citologia, evolução e fisiologia.</p></div>
+      <a href="materias/portugues.html">  <div class="materia-card"><h2>Português</h2><p>Gramática, redação, literatura e interpretação de textos.</p></div></a>
+      <div class="materia-card"><h2>Literatura</h2><p>Escolas literárias, autores brasileiros, análise de obras.</p></div>
+      <div class="materia-card"><h2>História</h2><p>Brasil, mundo, períodos históricos e movimentos sociais.</p></div>
+      <div class="materia-card"><h2>Geografia</h2><p>Geopolítica, climatologia, cartografia e economia.</p></div>
+      <div class="materia-card"><h2>Filosofia</h2><p>Pensadores, lógica, ética, política e teoria do conhecimento.</p></div>
+      <div class="materia-card"><h2>Sociologia</h2><p>Sociedade, cultura, economia, globalização e política.</p></div>
+      <div class="materia-card"><h2>Inglês</h2><p>Leitura, vocabulário, listening, grammar e ENEM.</p></div>
+      <div class="materia-card"><h2>Espanhol</h2><p>Vocabulário, leitura e gramática para ENEM e provas.</p></div>
+      <div class="materia-card"><h2>Redação</h2><p>Como fazer introdução, argumentação e conclusão nota mil.</p></div>
+      <div class="materia-card"><h2>Artes</h2><p>Estética, arte moderna, clássica e história da arte.</p></div>
+      <div class="materia-card"><h2>Educação Física</h2><p>Saúde, qualidade de vida e esportes.</p></div>
+      <div class="materia-card"><h2>Atualidades</h2><p>Tópicos quentes para ENEM, política, economia e sociedade.</p></div>
+      <div class="materia-card"><h2>Tecnologia e Inovação</h2><p>Temas para redação e questões contemporâneas.</p></div>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa — Estudar transforma vidas.</div>
+
+</body>
+</html>

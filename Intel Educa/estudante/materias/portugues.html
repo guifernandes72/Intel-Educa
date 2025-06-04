@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manual do Estudante - Educa Brasil</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --amarelo: #facc15;
+      --fundo: #f8fafc;
+    }
+
+button {
+    background-color: #1a1b55;
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 100px;
+}
+
+button:hover {
+    background-color: #3c3d7a;
+}
+
+
+    a{
+      text-decoration: none;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--fundo);
+      padding-bottom: 5rem;
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    header .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    header .logout {
+      background-color: white;
+      color: var(--azul1);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    header .logout:hover {
+      background-color: #ddd;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      color: var(--azul1);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #334155;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-left: 6px solid var(--azul1);
+      transition: 0.3s;
+    }
+
+    .card.bloqueado {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .card h2 {
+      color: var(--azul1);
+      margin-bottom: 1rem;
+    }
+
+    .card ul {
+      margin-top: 0.5rem;
+      padding-left: 1.2rem;
+    }
+
+    .card button {
+      margin-top: 1rem;
+      background-color: var(--amarelo);
+      color: var(--azul1);
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .card button:hover {
+      background-color: #eab308;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+
+    <main class="main">
+      <div class="">
+          <button id="downloadBtn">📥 Baixar Manual (PDF)</button>
+      </div>
+  </main>
+
+    <a href="../estudarMaterias.html"><button class="logout">Sair</button></a>
+    	
+
+
+
+  </header>
+
+  <main>
+    <h1>📚 Manual do Estudante</h1>
+    <p class="intro">Siga os módulos em ordem. Cada tópico será liberado conforme você avança.</p>
+
+    <section class="cards">
+      <!-- Card 1 -->
+      <div class="card" id="card1">
+        <a href="explicacao/segundoMedio/formacaoDePalavras.html"><h2>1️⃣ Formação de Palavras</h2></a>
+          <button onclick="liberarProximo('card2')">Concluir</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card bloqueado" id="card2">
+        <a href="explicacao/segundoMedio/verbos.html"><h2>2️⃣ Verbo: Presente e Imperativo</h2></a>
+          <button onclick="liberarProximo('card3')">Concluir</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card bloqueado" id="card3">
+        <a href="explicacao/segundoMedio/preterito.html"><h2>3️⃣ Verbo: Pretérito Perfeito e Imperfeito</h2></a>
+          <button onclick="liberarProximo('card4')">Concluir</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card bloqueado" id="card4">
+        <a href="explicacao/segundoMedio/preterito-mais.html"><h2>4️⃣ Pretérito mais-que-perfeito e tempos do futuro: progressão temporal</h2></a>
+          <button onclick="liberarProximo('card5')">Concluir</button>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card bloqueado" id="card5">
+        <a href="explicacao/segundoMedio/discursoCitado.html"><h2>5️⃣ Discurso citado</h2></a>
+          <button onclick="liberarProximo('card6')">Concluir</button>
+        </div>
+      </div>
+
+            <!-- Card 6 -->
+            <div class="card bloqueado" id="card6">
+              <a href="explicacao/segundoMedio/verbos-sintaxe.html"><h2>6️⃣Verbos e Sintaxe da oração </h2></a>
+                <button onclick="liberarProximo('card7')">Concluir</button>
+              </div>
+            </div>
+
+                  <!-- Card 7 -->
+      <div class="card bloqueado" id="card7">
+        <a href="explicacao/segundoMedio/vozes.html"><h2>7️⃣ Vozes Verbais</h2></a>
+          <button onclick="liberarProximo('card8')">Concluir</button>
+        </div>
+      </div>
+
+
+            <!-- Card 8 -->
+            <div class="card bloqueado" id="card8">
+              <a href="explicacao/segundoMedio/concordancia.html"><h2>8️⃣Concordância</h2></a>
+                <button onclick="liberarProximo('card9')">Concluir</button>
+              </div>
+            </div>
+
+
+
+                  <!-- Card 9 -->
+      <div class="card bloqueado" id="card9">
+        <a href="explicacao/segundoMedio/funcoes.html"><h2>9️⃣ Funções sintáticas nominais </h2></a>
+          <button onclick="alert('Parabéns! Você concluiu esse módulo!')">Concluir</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <script>
+    function liberarProximo(idCard) {
+      const card = document.getElementById(idCard);
+      card.classList.remove("bloqueado");
+    }
+
+    document.getElementById("downloadBtn").addEventListener("click", function() {
+    // Caminho para o arquivo PDF. Certifique-se de que o arquivo PDF esteja na pasta correta.
+    var pdfUrl = "Manual_Portugues_IntelEduca.pdf";
+    
+    // Cria um link temporário para iniciar o download
+    var link = document.createElement("a");
+    link.href = pdfUrl;
+    link.download = "Manual_Portugues_IntelEduca.pdf";  // Nome do arquivo que será baixado
+    document.body.appendChild(link);
+    link.click();  // Dispara o clique do link para iniciar o download
+    document.body.removeChild(link);  // Remove o link da página após o clique
+});
+
+  </script>
+</body>
+</html>

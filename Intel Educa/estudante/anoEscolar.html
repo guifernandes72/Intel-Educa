@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escolha o Ano Escolar</title>
+
+  <!-- Fonte moderna Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Estilo geral */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1E3A8A, #3B82F6);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(90deg, #1E3A8A, #3B82F6); /* Definir cores diretamente */
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
+
+    header .logo {
+      font-weight: bold;
+    }
+
+    /* Ajuste do botão Voltar ao Painel */
+    .voltar-btn {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .voltar-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Título */
+    h1 {
+      margin-top: 100px; /* Ajuste o título para abaixo do header fixo */
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+
+    /* Container dos botões */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(15px);
+    }
+
+    /* Botões */
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 20px 40px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Efeito ao passar o mouse */
+    a:hover {
+      background: rgba(255, 255, 255, 0.6);
+      color: #1E3A8A;
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.4);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header fixo no topo -->
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <!-- Botão "Voltar ao Painel" com link corrigido -->
+  </header>
+
+  <!-- Título da página -->
+  <h1>Qual ano escolar você gostaria de estudar?</h1>
+
+  <!-- Container com os links de anos escolares -->
+  <div class="container">
+    <a href="estudarMaterias.html">1° Ano</a>
+    <a href="estudarMaterias.html">2° Ano</a>
+    <a href="estudarMaterias.html">3° Ano</a>
+    <a href="dashboard-estudante.html">Voltar</a>
+  </div>
+
+</body>
+</html>

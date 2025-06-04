@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat - Edu, Assistente Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul1: #1E3A8A;
+      --azul2: #3B82F6;
+      --sombra: rgba(0, 0, 0, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--azul1), var(--azul2));
+      min-height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+        background: linear-gradient(90deg, var(--azul1), var(--azul2));
+        color: white;
+        padding: 20px 40px;
+        font-size: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px var(--sombra);
+      }
+
+      header .logo {
+        font-weight: bold;
+      }
+
+      header .logout {
+        background-color: white;
+        color: var(--azul1);
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      header .logout:hover {
+        background-color: #ddd;
+      }
+
+      header a{
+        text-decoration: none;
+        color: white;
+      }
+
+    .chat-container {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      width: 100%;
+    }
+
+    .chat-header {
+      font-size: 26px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .chat-box {
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 20px;
+      max-height: 400px;
+      overflow-y: auto;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .message {
+      margin-bottom: 15px;
+      display: flex;
+    }
+
+    .message.bot {
+      justify-content: flex-start;
+    }
+
+    .message.user {
+      justify-content: flex-end;
+    }
+
+    .message p {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 12px 18px;
+      border-radius: 20px;
+      max-width: 70%;
+      font-size: 16px;
+      color: white;
+    }
+
+    .message.bot p {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .input-area {
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .input-area input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .input-area button {
+      background-color: #fff;
+      color: var(--azul1);
+      padding: 12px 20px;
+      border: none;
+      border-radius: 0 8px 8px 0;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .input-area button:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .chat-container {
+        padding: 10px;
+      }
+
+      .chat-header {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard.html">Voltar ao Painel</a>
+  </header>
+
+  <!-- Chat container -->
+  <div class="chat-container">
+    <div class="chat-header">💬 Converse com o Edu</div>
+    <div class="chat-box" id="chat-box">
+      <!-- Mensagens aparecerão aqui -->
+    </div>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Digite sua pergunta..." />
+      <button onclick="enviarMensagem()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const input = document.getElementById("user-input");
+
+    // Função para adicionar mensagens ao chat
+    function appendMessage(msg, sender) {
+      const div = document.createElement("div");
+      div.className = sender === "user" ? "user" : "bot";
+      const p = document.createElement("p");
+      p.textContent = msg;
+      div.appendChild(p);
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Função para determinar a resposta do bot
+    function getBotResponse(input) {
+      input = input.toLowerCase();
+      if (input.includes("olá") || input.includes("oi") || input.includes("ola") ){
+        return "Olá! Eu sou o Edu, seu assistente virtual do Intel Educa. Como posso te ajudar hoje?!";
+      } else if (input.includes("matérias") || input.includes("disciplinas")) {
+        return "Você pode acessar as matérias selecionando o ano escolar na página principal.";
+      } else if (input.includes("ajuda") || input.includes("dúvida")) 
+        return "Claro! Me diga sua dúvida e eu tentarei te ajudar.";
+        else if (input.includes("ideia")){
+            return "Para você ter uma ideia de aula , pergunta para os alunos oq eles querem saber e suas dfculdades ."
+        }
+        else if (input.includes("contato")) {
+            return "O contato do Intel Educa é (11) 1234-5678"
+        }
+        else if (input.includes("email") || input.includes("suporte")){
+            return "Para suporte, entre em contato pelo e-mail: suporte@inteleduca.com"
+        }
+       else {
+        return "Desculpe, ainda estou aprendendo. Tente perguntar de outra forma?";
+      }
+    }
+
+    // Função que será chamada ao clicar no botão
+    function enviarMensagem() {
+      const userText = input.value.trim();
+      if (!userText) return;
+      appendMessage(userText, "user");
+      input.value = "";
+
+      setTimeout(() => {
+        const botReply = getBotResponse(userText);
+        appendMessage(botReply, "bot");
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

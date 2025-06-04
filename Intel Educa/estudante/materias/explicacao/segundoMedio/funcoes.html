@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Funções Sintáticas Nominais</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Funções Sintáticas Nominais</h1>
+
+    <p>As funções sintáticas nominais se referem ao papel desempenhado por um substantivo ou por termos que funcionam como substantivos dentro de uma oração. A principal função do nome (substantivo) é ser o núcleo do sujeito ou do predicado, mas ele pode desempenhar outras funções na oração, como objeto direto, objeto indireto, aposto, entre outras.</p>
+
+    <h2>🔹 Funções Sintáticas do Nome</h2>
+
+    <p>Os nomes podem exercer diversas funções dentro da oração. As mais comuns são:</p>
+
+    <ul>
+      <li><strong>Subjetivo</strong>: O sujeito da oração, quem realiza a ação.</li>
+      <li><strong>Predicativo</strong>: Indica a característica do sujeito ou do objeto.</li>
+      <li><strong>Objeto Direto</strong>: Completa o sentido do verbo sem a necessidade de preposição.</li>
+      <li><strong>Objeto Indireto</strong>: Completa o sentido do verbo com o uso de preposição.</li>
+      <li><strong>Aposto</strong>: Explica, detalha ou exemplifica o substantivo.</li>
+    </ul>
+
+    <h2>🔹 Exemplos Práticos</h2>
+
+    <div class="exemplo">
+      <strong>Sujeito:</strong> <em>O <strong>cachorro</strong> latiu muito ontem.</em><br>
+      Função: "Cachorro" é o sujeito da oração.
+    </div>
+
+    <div class="exemplo">
+      <strong>Objeto Direto:</strong> <em>Ele <strong>viu</strong> o filme.</em><br>
+      Função: "Filme" é o objeto direto de "viu".
+    </div>
+
+    <div class="exemplo">
+      <strong>Objeto Indireto:</strong> <em>Ela <strong>gostou</strong> da comida.</em><br>
+      Função: "Comida" é o objeto indireto de "gostou".
+    </div>
+
+    <h2>✍️ Exercícios</h2>
+
+    <form onsubmit="verificarFuncoesSintaticas(event)">
+      <ol>
+        <li>
+          Qual a função sintática do termo <strong>‘professor’</strong> na frase:  
+          <em>O <strong>professor</strong> explicou a matéria.</em><br>
+          <input type="text" id="pergunta1" placeholder="Digite a função sintática">
+        </li>
+        <li>
+          Qual a função sintática do termo <strong>‘livros’</strong> na frase:  
+          <em>Eu comprei <strong>livros</strong> interessantes.</em><br>
+          <input type="text" id="pergunta2" placeholder="Digite a função sintática">
+        </li>
+        <li>
+          Qual a função sintática do termo <strong>‘ontem’</strong> na frase:  
+          <em>Ele chegou <strong>ontem</strong>.</em><br>
+          <input type="text" id="pergunta3" placeholder="Digite a função sintática">
+        </li>
+      </ol>
+      <button type="submit">Verificar Respostas</button>
+    </form>
+
+    <div id="resultado" style="margin-top: 20px;"></div>
+  </main>
+
+  <script>
+    function verificarFuncoesSintaticas(event) {
+      event.preventDefault();
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+
+      let resultado = '';
+
+      if (p1 === 'sujeito') {
+        resultado += "<p><strong>1) Correto!</strong> O termo 'professor' é o sujeito da frase.</p>";
+      } else {
+        resultado += "<p><strong>1) Incorreto.</strong> A função correta é 'sujeito'.</p>";
+      }
+
+      if (p2 === 'objeto direto') {
+        resultado += "<p><strong>2) Correto!</strong> O termo 'livros' é o objeto direto.</p>";
+      } else {
+        resultado += "<p><strong>2) Incorreto.</strong> A função correta é 'objeto direto'.</p>";
+      }
+
+      if (p3 === 'adjunto adverbial') {
+        resultado += "<p><strong>3) Correto!</strong> O termo 'ontem' é um adjunto adverbial.</p>";
+      } else {
+        resultado += "<p><strong>3) Incorreto.</strong> A função correta é 'adjunto adverbial'.</p>";
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

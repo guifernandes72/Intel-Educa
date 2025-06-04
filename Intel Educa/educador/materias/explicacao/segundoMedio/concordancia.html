@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Concordância</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Concordância</h1>
+
+    <p>A <strong>concordância</strong> é a harmonia entre os elementos da oração.</p>
+
+    <h2>🔹 Concordância Verbal</h2>
+    <p>O verbo concorda com o sujeito em número e pessoa.</p>
+    <div class="exemplo">Os alunos <strong>chegaram</strong> cedo.</div>
+
+    <h2>🔹 Concordância Nominal</h2>
+    <p>Os adjetivos, pronomes e artigos concordam em gênero e número com o substantivo a que se referem.</p>
+    <div class="exemplo">As <strong>meninas bonitas</strong> estavam animadas.</div>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarConcordancia(event)">
+        <ol>
+          <li>
+            Corrija a frase:  
+            <em>“As garota estavam contente.”</em><br>
+            <input type="text" id="pergunta1" placeholder="Digite a frase correta">
+          </li>
+          <li>
+            Qual o tipo de concordância envolvida na frase:  
+            <em>“O aluno e a aluna chegaram atrasados.”</em><br>
+            <input type="text" id="pergunta2" placeholder="Verbal ou nominal?">
+          </li>
+          <li>
+            Corrija a frase:  
+            <em>“As casa bonita foi vendida.”</em><br>
+            <input type="text" id="pergunta3" placeholder="Digite a frase correta">
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+
+  <script>
+    function verificarConcordancia(event) {
+      event.preventDefault();
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+
+      let resultado = '';
+
+      if (p1.includes("as garotas estavam contentes")) {
+        resultado += "<p><strong>1) Correto!</strong> Você corrigiu bem a concordância nominal.</p>";
+      } else {
+        resultado += "<p><strong>1) Incorreto.</strong> A forma correta é: 'As garotas estavam contentes.'</p>";
+      }
+
+      if (p2 === "verbal") {
+        resultado += "<p><strong>2) Correto!</strong> É uma concordância verbal.</p>";
+      } else {
+        resultado += "<p><strong>2) Incorreto.</strong> A resposta correta é 'verbal'.</p>";
+      }
+
+      if (p3.includes("as casas bonitas foram vendidas")) {
+        resultado += "<p><strong>3) Correto!</strong> Muito bem! Corrigiu a concordância corretamente.</p>";
+      } else {
+        resultado += "<p><strong>3) Incorreto.</strong> A forma correta é: 'As casas bonitas foram vendidas.'</p>";
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

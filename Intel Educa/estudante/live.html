@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Live com Chat - Intel</title>
+  <style>
+
+
+:root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --azul-claro: #e3f2fd;
+      --branco: #ffffff;
+      --cinza: #f4f4f4;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    header .logo {
+      font-weight: bold;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    header a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      margin: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: #fff;
+    }
+
+    .chat {
+      width: 30%;
+      background-color: #2a2a2a;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .chat-header {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .chat-box {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+
+    .chat-box .message,
+    .chat-box .message1,
+    .chat-box .message2 {
+      margin: 6px 0;
+      padding: 8px 12px;
+      background-color: #444;
+      border-radius: 8px;
+      word-wrap: break-word;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .chat-input button {
+      background-color: #1f0f68;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      background-color: #171e88;
+    }
+
+    .video-section {
+      width: 70%;
+      background-color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    video {
+      width: 100%;
+      max-height: 100%;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .chat, .video-section {
+        width: 100%;
+        height: 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard-estudante.html">Voltar ao Painel</a>
+  </header>
+
+  <div class="container">
+    <!-- Chat -->
+    <div class="chat">
+      <div class="chat-header">Chat da Live</div>
+      <div class="chat-box" id="chat-box">
+        <div class="message">👩‍🏫 Bem-vindo(a) à Live Intel Educa!</div>
+        <div class="message1">Gabriella Fernandes: Poderia repetir por favor?</div>
+        <div class="message2">Jefferson Alcides: Pitágoras?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="video-section">
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function enviarMensagem() {
+      const input = document.getElementById("chatInput");
+      const chatBox = document.getElementById("chat-box");
+
+      if (input.value.trim() !== "") {
+        const novaMensagem = document.createElement("div");
+        novaMensagem.className = "message";
+        novaMensagem.textContent = "Você: " + input.value;
+        chatBox.appendChild(novaMensagem);
+        input.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>

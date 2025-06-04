@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Discurso Citado</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Discurso Citado</h1>
+
+    <p>O <strong>discurso citado</strong> é uma forma de apresentar o que uma pessoa disse, mantendo suas palavras originais ou adaptando o conteúdo à narrativa.</p>
+
+    <h2>📌 Tipos de discurso</h2>
+    <ul>
+      <li><strong>Discurso direto:</strong> reproduz fielmente o que foi dito. Usa travessões, aspas ou dois pontos.</li>
+      <div class="exemplo">Maria disse: "Estou cansada."</div>
+
+      <li><strong>Discurso indireto:</strong> reproduz a fala de forma adaptada pelo narrador, com mudanças nos pronomes e verbos.</li>
+      <div class="exemplo">Maria disse que estava cansada.</div>
+
+      <li><strong>Discurso indireto livre:</strong> mistura a voz do narrador com a do personagem, sem marcas evidentes de citação.</li>
+      <div class="exemplo">Maria olhou pela janela. Estava cansada. Tão cansada de tudo aquilo...</div>
+    </ul>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarExercicios(event)">
+        <ol>
+          <li>
+            Identifique o tipo de discurso:
+            <ul>
+              <li>a) João disse: "Vou sair agora."
+                <input type="text" id="pergunta1" placeholder="Tipo de discurso">
+              </li>
+              <li>b) João disse que ia sair naquele momento.
+                <input type="text" id="pergunta2" placeholder="Tipo de discurso">
+              </li>
+              <li>c) João olhou para o relógio. Era tarde. Precisava sair logo!
+                <input type="text" id="pergunta3" placeholder="Tipo de discurso">
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+
+  <script>
+    function verificarExercicios(event) {
+      event.preventDefault();
+
+      let resultado = '';
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+
+      if (p1 === 'discurso direto' || p1 === 'direto') {
+        resultado += '<p><strong>1a) Correto!</strong> É discurso direto.</p>';
+      } else {
+        resultado += '<p><strong>1a) Incorreto.</strong> A resposta correta é "discurso direto".</p>';
+      }
+
+      if (p2 === 'discurso indireto' || p2 === 'indireto') {
+        resultado += '<p><strong>1b) Correto!</strong> É discurso indireto.</p>';
+      } else {
+        resultado += '<p><strong>1b) Incorreto.</strong> A resposta correta é "discurso indireto".</p>';
+      }
+
+      if (p3 === 'discurso indireto livre' || p3 === 'indireto livre') {
+        resultado += '<p><strong>1c) Correto!</strong> É discurso indireto livre.</p>';
+      } else {
+        resultado += '<p><strong>1c) Incorreto.</strong> A resposta correta é "discurso indireto livre".</p>';
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

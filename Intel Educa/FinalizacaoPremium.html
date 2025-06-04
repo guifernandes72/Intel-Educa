@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assinatura Concluída - Intel Educa</title>
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body style="overflow: hidden;">
+  <header class="header">
+    <div class="container">
+      <div class="logo">Intel<span>Educa</span></div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="estudante/login-estudante.html">Login Estudante</a></li>
+          <li><a href="educador/login-educador.html">Login Educador</a></li>
+          <li><a href="estudante/cadastroAluno.html" class="btn">Cadastre-se</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+ <div class="baixo">
+  <section class="sucesso">
+    <div class="container">
+      <h1>Assinatura Concluída!</h1>
+      <p>Parabéns, você agora faz parte do Intel Educa Premium!</p>
+      <p>Acesse todo o conteúdo exclusivo, conecte-se com educadores e aproveite todos os benefícios do nosso plano Premium.</p>
+      <a href="estudante/dashboard-estudante.html" class="btn-primary" style="background-color: #fbc02d;">Ir para o Dashboard</a>
+    </div>
+  </section>
+ </div>
+
+</body>
+</html>
+
+
+<style>
+
+  .baixo{
+    margin-top: 130px;
+  }
+
+    .sucesso {
+  background: linear-gradient(to right, #f0fff0, #e6f7ff);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.sucesso h1 {
+  font-size: 2.5rem;
+  color: #2c2c2c;
+  margin-bottom: 15px;
+}
+
+.sucesso p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  background-color: #6600cc;
+  color: #fff;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 200px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #5500aa;
+}
+
+@media (max-width: 600px) {
+  .sucesso h1 {
+    font-size: 2rem;
+  }
+  
+  .sucesso p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
+
+</style>

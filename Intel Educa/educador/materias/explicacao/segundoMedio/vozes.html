@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Vozes Verbais</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Vozes Verbais</h1>
+
+    <p>As <strong>vozes verbais</strong> indicam a relação entre o sujeito e a ação expressa pelo verbo.</p>
+
+    <h2>🔹 Voz ativa</h2>
+    <p>O sujeito é o agente da ação, ou seja, ele realiza a ação verbal.</p>
+    <div class="exemplo">O aluno <strong>respondeu</strong> a pergunta.</div>
+
+    <h2>🔹 Voz passiva</h2>
+    <p>O sujeito sofre a ação praticada por outro agente.</p>
+    <div class="exemplo">A pergunta <strong>foi respondida</strong> pelo aluno.</div>
+
+    <h2>🔹 Voz reflexiva</h2>
+    <p>O sujeito pratica e sofre a ação ao mesmo tempo.</p>
+    <div class="exemplo">O aluno <strong>se feriu</strong> durante o jogo.</div>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarExercicios(event)">
+        <ol>
+          <li>
+            Qual é a voz da oração:  
+            <em>“O diretor anunciou a nova regra.”</em>  
+            <input type="text" id="pergunta1" placeholder="Digite a voz verbal">
+          </li>
+          <li>
+            Reescreva a frase na voz passiva:  
+            <em>“Os técnicos resolveram o problema.”</em>  
+            <input type="text" id="pergunta2" placeholder="Digite a frase na voz passiva">
+          </li>
+          <li>
+            Qual é a voz da oração:  
+            <em>“Pedro se cortou ao preparar o jantar.”</em>  
+            <input type="text" id="pergunta3" placeholder="Digite a voz verbal">
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+
+  <script>
+    function verificarExercicios(event) {
+      event.preventDefault();
+
+      let resultado = '';
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+
+      if (p1 === 'voz ativa' || p1 === 'ativa') {
+        resultado += '<p><strong>1) Correto!</strong> A frase está na voz ativa.</p>';
+      } else {
+        resultado += '<p><strong>1) Incorreto.</strong> A resposta correta é "voz ativa".</p>';
+      }
+
+      const fraseEsperada = "o problema foi resolvido pelos técnicos";
+      if (p2.replace(/[.,]/g, '') === fraseEsperada) {
+        resultado += '<p><strong>2) Correto!</strong> Você reescreveu corretamente na voz passiva.</p>';
+      } else {
+        resultado += '<p><strong>2) Incorreto.</strong> A forma correta seria: "O problema foi resolvido pelos técnicos".</p>';
+      }
+
+      if (p3 === 'voz reflexiva' || p3 === 'reflexiva') {
+        resultado += '<p><strong>3) Correto!</strong> A frase está na voz reflexiva.</p>';
+      } else {
+        resultado += '<p><strong>3) Incorreto.</strong> A resposta correta é "voz reflexiva".</p>';
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

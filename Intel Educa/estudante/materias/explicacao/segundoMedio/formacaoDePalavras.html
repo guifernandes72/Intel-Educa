@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formação de Palavras - Manual do Estudante</title>
+  <link rel="stylesheet" href="manual.css">
+</head>
+<body>
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+
+  <main>
+    <section class="formacao-palavras">
+      <h1>🔤 Formação de Palavras</h1>
+      <p class="descricao">
+        A formação de palavras é um processo essencial para entender como as palavras podem ser criadas, modificadas ou combinadas em um idioma. Vamos explorar dois principais processos: **derivação** e **composição**.
+      </p>
+
+      <section class="explicacao">
+        <h2>📖 O que é a Derivação?</h2>
+        <p>
+          A derivação é o processo de criar novas palavras a partir de uma palavra-base (radical), acrescentando sufixos ou prefixos. Exemplos:
+        </p>
+        <ul>
+          <li><strong>Feliz</strong> + sufixo <strong>-dade</strong> = <strong>Felicidade</strong></li>
+          <li><strong>Amigo</strong> + sufixo <strong>-al</strong> = <strong>Amigal</strong></li>
+        </ul>
+      </section>
+
+      <section class="explicacao">
+        <h2>🔍 O que é a Composição?</h2>
+        <p>
+          A composição consiste na junção de duas ou mais palavras para formar uma nova. Exemplos:
+        </p>
+        <ul>
+          <li><strong>Passa</strong> + <strong>tempo</strong> = <strong>Passatempo</strong></li>
+          <li><strong>Beira</strong> + <strong>mar</strong> = <strong>Beira-mar</strong></li>
+        </ul>
+      </section>
+
+      <section class="exercicio">
+        <h2>💡 Exercício</h2>
+        <form id="form-exercicio" onsubmit="verificarExercicios(event)">
+          <label for="pergunta1">Qual é o sufixo que transforma a palavra "feliz" em "felicidade"?</label>
+          <input type="text" id="pergunta1" placeholder="Digite sua resposta..." required>
+
+          <label for="pergunta2">Qual é a composição da palavra "passatempo"?</label>
+          <input type="text" id="pergunta2" placeholder="Digite sua resposta..." required>
+
+          <button type="submit" class="botao-concluir">Enviar Respostas</button>
+        </form>
+
+        <div id="resultado" class="resultado"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="manual.js"></script>
+</body>
+</html>
+
+<style>
+  :root {
+    --azul1: #0f172a;
+    --azul2: #24355c;
+    --branco: #ffffff;
+    --cinza-claro: #f4f4f4;
+    --cinza-escuro: #333;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--cinza-claro);
+  }
+
+  header {
+  background-color: var(--azul1);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+header .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+header .logout {
+  background-color: white;
+  color: var(--azul1);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+header .logout:hover {
+  background-color: #ddd;
+}
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #logo img {
+    height: 50px;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+  }
+
+  .nav-list li {
+    margin-left: 20px;
+  }
+
+  .nav-list a {
+    color: var(--branco);
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+  }
+
+  .nav-list a:hover {
+    color: var(--azul2);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--branco);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    font-size: 32px;
+    color: var(--azul1);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .descricao {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .explicacao {
+    margin-bottom: 40px;
+  }
+
+  .explicacao h2 {
+    font-size: 24px;
+    color: var(--azul1);
+    margin-bottom: 15px;
+  }
+
+  .explicacao p {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  ul {
+    margin-left: 20px;
+  }
+
+  ul li {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+  }
+
+  .exercicio form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .exercicio label {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+  }
+
+  .exercicio input {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid var(--azul1);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .exercicio input:focus {
+    border-color: var(--azul2);
+  }
+
+  .botao-concluir {
+    background-color: var(--azul1);
+    color: var(--branco);
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .botao-concluir:hover {
+    background-color: var(--azul2);
+  }
+
+  #resultado {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  #resultado.correct {
+    color: #4CAF50;
+  }
+
+  #resultado.incorrect {
+    color: #D32F2F;
+  }
+</style>
+
+<script>
+  // Função para verificar respostas dos exercícios
+  function verificarExercicios(event) {
+    event.preventDefault();  // Previne o envio do formulário e o recarregamento da página
+
+    let resultado = '';
+    const resposta1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+    const resposta2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+
+    // Verificando as respostas
+    if (resposta1 === 'dade') {
+        resultado += '<p><strong>Correto!</strong> A derivação de "feliz" é "felicidade".</p>';
+    } else {
+        resultado += '<p><strong>Errado!</strong> A resposta correta é "dade".</p>';
+    }
+
+    if (resposta2 === 'passatempo') {
+        resultado += '<p><strong>Correto!</strong> A composição correta de "passa" + "tempo" é "passatempo".</p>';
+    } else {
+        resultado += '<p><strong>Errado!</strong> A resposta correta é "passatempo".</p>';
+    }
+
+    // Exibindo o resultado
+    document.getElementById('resultado').innerHTML = resultado;
+  }
+</script>

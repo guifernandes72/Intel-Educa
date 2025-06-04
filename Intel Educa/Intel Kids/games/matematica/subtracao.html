@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Soma - Intel Kids</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <header>
+        <a href="../../games/matematica/index.html" class="back-home">⬅ Voltar</a>
+        <h1>Subtração</h1>
+        <p>Boa Sorte!</p>
+      </header>
+
+  <main class="game-container">
+    <div id="pergunta" class="question-box">Quanto é 0 - 0?</div>
+    <input type="number" id="resposta" class="input-answer" placeholder="Digite sua resposta">
+    <button onclick="verificarResposta()" class="button-answer">Responder</button>
+
+    <div id="resultado" class="feedback"></div>
+    <div class="pontuacao-box">
+      <span>Pontuação: </span><span id="pontuacao" class="score">0</span>
+    </div>
+  </main>
+
+  <script src="soma.js"></script>
+</body>
+</html>
+
+
+<script>
+    let num1 = 0;
+let num2 = 0;
+let pontuacao = 0;
+
+function novaPergunta() {
+    num1 = Math.floor(Math.random() * 10);
+    num2 = Math.floor(Math.random() * 10);
+    document.getElementById('pergunta').innerText = `Quanto é ${num1} - ${num2}?`;
+    document.getElementById('resposta').value = ''; // Limpar o campo de resposta
+    document.getElementById('resultado').innerHTML = ''; // Limpar resultado anterior
+}
+
+function verificarResposta() {
+    const resposta = parseInt(document.getElementById('resposta').value);
+    const feedback = document.getElementById('resultado');
+
+    // Verificar se a resposta é válida
+    if (isNaN(resposta)) {
+        feedback.innerHTML = "<span class='incorrect-feedback'>❌ Por favor, insira um número válido.</span>";
+        return;
+    }
+
+    // Verificar se a resposta está correta
+    if (resposta === num1 - num2) {
+        feedback.innerHTML = "<span class='correct-feedback'>✅ Você acertou!</span>";
+        pontuacao++;
+    } else {
+        feedback.innerHTML = "<span class='incorrect-feedback'>❌ Errou! Tente novamente.</span>";
+    }
+
+    // Atualizar a pontuação na tela
+    document.getElementById('pontuacao').innerText = pontuacao;
+    setTimeout(novaPergunta, 800); // Após 2 segundos, gerar nova pergunta
+}
+
+// Iniciar o jogo com uma nova pergunta assim que a página carregar
+window.onload = novaPergunta;
+
+</script>
+
+<style>
+    /* Reset básico de margem e padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+   body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8ff, #d0f0ff);
+      color: #ffffff;
+    }
+
+    header {
+      background: linear-gradient(to right, #0d0aaf, #1291c4);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #ffffff;
+      text-shadow: 2px 2px #0011ff;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+        color: white;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #002bec;
+      border: 2px solid #0400ff;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color blue 0.3s, transform 0.2s;
+    }
+
+    .back-home:hover {
+      background-color: #00e1ff;
+    }
+
+/* Container principal dos jogos */
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin-top: 100px;
+}
+
+.game-container:hover {
+  transform: translateY(-10px);
+}
+
+/* Caixa de perguntas */
+.question-box {
+  background-color: #190dc2;
+  padding: 25px;
+  border-radius: 10px;
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input para as respostas */
+.input-answer {
+  padding: 12px;
+  font-size: 1.4em;
+  border-radius: 10px;
+  border: 2px solid #0004ff;
+  width: 60%;
+  margin-bottom: 25px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.input-answer:focus {
+  border-color: #050e57;
+}
+
+/* Botão de resposta */
+.button-answer {
+  padding: 14px 30px;
+  background-color: #132aaf;
+  color: #fff;
+  font-size: 1.5em;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.button-answer:hover {
+  background-color: #221ff3;
+  transform: scale(1.1);
+}
+
+/* Feedback do resultado */
+.feedback {
+  font-size: 1.8em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.correct-feedback {
+  color: #4caf50; /* Verde claro para resposta correta */
+}
+
+.incorrect-feedback {
+  color: #f44336; /* Vermelho para resposta incorreta */
+}
+
+/* Pontuação */
+.pontuacao-box {
+  font-size: 1.4em;
+  margin-top: 25px;
+  font-weight: bold;
+  color: #250bb4;
+}
+
+.score {
+  font-size: 1.8em;
+  color: #05a5a5;
+  font-weight: bold;
+}
+
+/* Link para voltar aos jogos */
+.back-link {
+  text-decoration: none;
+  color: #2600ff;
+  margin-top: 30px;
+  font-size: 1.2em;
+  display: block;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+  color: #4c00ff;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+  .input-answer {
+    width: 80%;
+  }
+
+  .button-answer {
+    width: 70%;
+  }
+
+  header {
+    font-size: 2em;
+  }
+}
+
+</style>

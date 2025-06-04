@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Intel Kids</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo ao Intel Kids!</h1>
+        <p>Aprender pode ser divertido! Escolha uma matéria:</p>
+    </header>
+    <main class="menu">
+        <a class="btn matematica" href="games/matematica/index.html">Matemática</a>
+        <a class="btn portugues" href="games/portugues/index.html">Português</a>
+        <a class="btn ciencias" href="games/ciencias/index.html">Ciências</a>
+        <a class="btn historia" href="games/historia/index.html">História</a>
+        <a class="btn geografia" href="games/geografia/index.html">Geografia</a>
+    </main>
+</body>
+</html>
+
+
+<style>
+    /* Reset básico e estilo global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient( #a0d8ff);
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilo do header */
+header {
+    background-color: #007acc;
+    color: white;
+    padding: 40px 20px;
+    border-bottom: 5px solid #ffd700;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.5em;
+}
+
+/* Estilo do menu */
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 40px 10px;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 20px 40px;
+    border-radius: 30px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    width: 250px;
+    height: 80px;
+    margin: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Cores específicas para cada botão */
+.matematica { background-color: #0004ff; }
+.portugues { background-color: #c0392b; }
+.ciencias { background-color: #27ae60; }
+.historia { background-color: #8e44ad; }
+.geografia { background-color: #f39c12; }
+
+/* Efeitos de foco nos botões */
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 10px 2px rgba(255, 165, 0, 0.8);
+}
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .btn {
+        width: 80%;
+        font-size: 18px;
+    }
+}
+
+</style>

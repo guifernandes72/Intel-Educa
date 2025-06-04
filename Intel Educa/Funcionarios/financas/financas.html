@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Financeiro - Intel Educa</title>
+  <link rel="stylesheet" href="financeiro.css">
+</head>
+<body>
+  <header>
+    <div class="logo">💸 Intel Educa - Financeiro</div>
+    <a class="voltar" href="dashboard.html">⬅ Voltar ao Painel</a>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <ul>
+        <li><a href="contas.html">📆 Contas a Pagar</a></li>
+        <li><a href="#">📥 Contas a Receber</a></li>
+        <li><a href="#">📊 Relatórios</a></li>
+        <li><a href="#">💳 Folha de Pagamento</a></li>
+        <li><a href="#">📈 Planejamento</a></li>
+        <li><a href="#">🧾 Orçamentos</a></li>
+        <li><a href="#">🔐 Auditorias</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <h1>Resumo Financeiro</h1>
+
+      <form id="transacao-form">
+        <input type="text" id="descricao" placeholder="Descrição" required>
+        <input type="number" id="valor" placeholder="Valor (R$)" required>
+        <select id="tipo">
+          <option value="receita">Receita</option>
+          <option value="despesa">Despesa</option>
+        </select>
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <h2>Transações</h2>
+      <table id="tabela-transacoes">
+        <thead>
+          <tr>
+            <th>Descrição</th>
+            <th>Valor (R$)</th>
+            <th>Tipo</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h2>Saldo Total: R$ <span id="saldo">0.00</span></h2>
+    </main>
+  </div>
+</body>
+</html>
+
+
+<style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #eef4fc;
+}
+
+header {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.voltar {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #2563eb;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: block;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #1e40af;
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px;
+}
+
+h1, h2 {
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+form {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+form input, form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+form button {
+  padding: 10px 20px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #1d4ed8;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+table th {
+  background-color: #1e3a8a;
+  color: white;
+}
+
+table td button {
+  background-color: #e11d48;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+</style>
+
+
+<script>
+    const form = document.getElementById("transacao-form");
+const tabela = document.querySelector("#tabela-transacoes tbody");
+const saldoSpan = document.getElementById("saldo");
+
+let saldoTotal = 0;
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const descricao = document.getElementById("descricao").value;
+  const valor = parseFloat(document.getElementById("valor").value);
+  const tipo = document.getElementById("tipo").value;
+
+  if (!descricao || isNaN(valor)) return;
+
+  const linha = document.createElement("tr");
+
+  linha.innerHTML = `
+    <td>${descricao}</td>
+    <td>R$ ${valor.toFixed(2)}</td>
+    <td>${tipo}</td>
+    <td><button onclick="removerTransacao(this, ${valor}, '${tipo}')">Remover</button></td>
+  `;
+
+  tabela.appendChild(linha);
+
+  atualizarSaldo(valor, tipo);
+
+  form.reset();
+});
+
+function atualizarSaldo(valor, tipo) {
+  saldoTotal += tipo === "despesa" ? -valor : valor;
+  saldoSpan.textContent = saldoTotal.toFixed(2);
+}
+
+function removerTransacao(botao, valor, tipo) {
+  botao.parentElement.parentElement.remove();
+  atualizarSaldo(tipo === "despesa" ? -valor : valor, tipo === "despesa" ? "receita" : "despesa");
+}
+
+</script>

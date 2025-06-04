@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iniciar Live | Intel Educa</title>
+  <style>
+    :root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --cinza: #f0f0f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: var(--cinza);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .back-btn {
+      background-color: white;
+      color: var(--azul1);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .video-section {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+      width: 100%;
+      border-radius: 10px;
+      background-color: black;
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .controls button {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .start-btn {
+      background-color: var(--azul2);
+      color: white;
+    }
+
+    .stop-btn {
+      background-color: #e53935;
+      color: white;
+    }
+
+    .chat-section {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+      height: 350px;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .chat-input button {
+      background-color: var(--azul1);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎥 Intel Educa</div>
+    <a href="dashboard.html"><button class="back-btn">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <div class="video-section">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="controls">
+        <button class="start-btn" onclick="iniciarCamera()">Ativar Câmera</button>
+        <button class="stop-btn" onclick="pararCamera()">Desligar Câmera</button>
+      </div>
+    </div>
+
+    <div class="chat-section">
+      <h3>💬 Chat da Live</h3>
+      <div class="chat-messages" id="chat"></div>
+      <div class="chat-input">
+        <input type="text" id="mensagem" placeholder="Digite sua mensagem..." />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+  <script>
+    const video = document.getElementById('video');
+    let stream;
+
+    async function iniciarCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        video.srcObject = stream;
+      } catch (error) {
+        alert('Erro ao acessar a câmera: ' + error.message);
+      }
+    }
+
+    function pararCamera() {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+      }
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById('mensagem');
+      const chat = document.getElementById('chat');
+      const texto = input.value.trim();
+
+      if (texto !== '') {
+        const msg = document.createElement('div');
+        msg.innerText = `Você: ${texto}`;
+        msg.style.marginBottom = '8px';
+        chat.appendChild(msg);
+        input.value = '';
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }
+  </script>
+
+</body>
+</html>

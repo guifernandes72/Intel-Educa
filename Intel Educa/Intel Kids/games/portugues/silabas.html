@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo de Sílabas - Intel Kids</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(to bottom right, #fff0f0, #ffe5e5);
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(to right, #d90429, #ef233c);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #fff;
+            text-shadow: 2px 2px #8b0000;
+        }
+
+        .back-home {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            color: #d90429;
+            border: 2px solid #ef233c;
+            padding: 8px 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-home:hover {
+            background-color: #ffccd5;
+        }
+
+        .game-area {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .instruction {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .syllables {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .syllable {
+            padding: 10px 20px;
+            font-size: 1.4em;
+            background-color: #ffe0e0;
+            border: 2px solid #d90429;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .syllable:hover {
+            background-color: #ffb3b3;
+        }
+
+        .answer {
+            font-size: 1.4em;
+            margin: 20px 0;
+            min-height: 30px;
+            color: #d90429;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1em;
+            background-color: #d90429;
+            color: #fff;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #ef233c;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+
+        .ok {
+            color: green;
+        }
+
+        .err {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="index.html" class="back-home">⬅ Voltar</a>
+        <h1>Monte a Palavra com Sílabas</h1>
+    </header>
+
+    <div class="game-area">
+        <div class="instruction">Clique nas sílabas na ordem certa para formar a palavra:</div>
+        <div class="syllables" id="syllableOptions"></div>
+        <div class="answer" id="resposta"></div>
+        <button onclick="verificar()">Verificar</button>
+        <button onclick="apagar()">Apagar</button>
+        <div class="message" id="mensagem"></div>
+    </div>
+
+    <script>
+
+    const palavras = [
+        { silabas: ["GUE", "FO", "TE"], correta: "FOGUETE" },
+        { silabas: ["DEI", "CA", "RA"], correta: "CADEIRA" },
+        { silabas: ["TI", "VEN", "DOR", "LA"], correta: "VENTILADOR" },
+        { silabas: ["SI", "PRE", "TE", "DEN"], correta: "PRESIDENTE" },
+        { silabas: ["CA", "ES", "DA"], correta: "ESCADA" },
+        { silabas: ["LHA", "ÇO", "PA"], correta: "PALHAÇO" },
+        { silabas: ["GRE", "I", "JA"], correta: "IGREJA" }
+    ];
+
+    let index = 0;
+    let respostaUsuario = [];
+    let acertos = 0;
+    let tentativas = 0;
+
+    function embaralhar(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
+
+    function mostrarSilabas() {
+        if (index >= palavras.length) {
+            mostrarResultadoFinal();
+            return;
+        }
+
+        const area = document.getElementById("syllableOptions");
+        area.innerHTML = "";
+        respostaUsuario = [];
+        document.getElementById("resposta").innerText = "";
+        document.getElementById("mensagem").innerText = "";
+
+        const silabas = [...palavras[index].silabas];
+        const embaralhadas = embaralhar(silabas);
+
+        embaralhadas.forEach(silaba => {
+            const span = document.createElement("span");
+            span.innerText = silaba;
+            span.className = "syllable";
+            span.onclick = () => {
+                respostaUsuario.push(silaba);
+                document.getElementById("resposta").innerText = respostaUsuario.join("");
+            };
+            area.appendChild(span);
+        });
+    }
+
+    function verificar() {
+        const correta = palavras[index].correta;
+        const resposta = respostaUsuario.join("");
+        const msg = document.getElementById("mensagem");
+        tentativas++;
+
+        if (resposta === correta) {
+            msg.innerText = "Muito bem! 🎉";
+            msg.className = "message ok";
+            acertos++;
+        } else {
+            msg.innerText = `Oops! Era "${correta}" 😅`;
+            msg.className = "message err";
+        }
+
+        index++;
+        setTimeout(mostrarSilabas, 2500); // esperar um pouquinho para o usuário ver o feedback
+    }
+
+    function apagar() {
+        respostaUsuario = [];
+        document.getElementById("resposta").innerText = "";
+        document.getElementById("mensagem").innerText = "";
+    }
+
+    function mostrarResultadoFinal() {
+        const area = document.querySelector(".game-area");
+        const percentual = ((acertos / tentativas) * 100).toFixed(1);
+
+        area.innerHTML = `
+            <h2>🎉 Parabéns, você completou o jogo!</h2>
+            <p><strong>Palavras corretas:</strong> ${acertos}</p>
+            <p><strong>Total de tentativas:</strong> ${tentativas}</p>
+            <p><strong>Desempenho:</strong> ${percentual}%</p>
+        `;
+    }
+
+    function reiniciar() {
+        index = 0;
+        acertos = 0;
+        tentativas = 0;
+        mostrarSilabas();
+    }
+
+    // Inicia o jogo
+    mostrarSilabas();
+
+
+    /* 
+    
+
+    
+
+    */
+
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Intel Educa | Anotações</title>
+  <style>
+    :root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --cinza: #f4f4f4;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: var(--cinza);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: white;
+      color: var(--azul1);
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .logout:hover {
+      background-color: #ddd;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--azul1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      resize: none;
+      font-size: 16px;
+    }
+
+    .controls {
+      margin-top: 15px;
+      text-align: right;
+    }
+
+    .controls button {
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .controls button:hover {
+      background-color: var(--azul1);
+    }
+
+    .notes-list {
+      margin-top: 40px;
+    }
+
+    .note {
+      background-color: var(--cinza);
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px var(--sombra);
+      position: relative;
+    }
+
+    .note-buttons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .note-buttons button {
+      background-color: transparent;
+      border: none;
+      color: var(--azul1);
+      font-size: 16px;
+      margin-left: 8px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="dashboard.html"><button class="logout">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <h1>📝 Anotações da Aula</h1>
+
+    <textarea id="novaNota" placeholder="Escreva aqui suas anotações..."></textarea>
+    
+    <div class="controls">
+      <button onclick="salvarNota()">Salvar</button>
+      <button onclick="limparTexto()">Limpar</button>
+    </div>
+
+    <div class="notes-list" id="listaNotas"></div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+  <script>
+    let notas = JSON.parse(localStorage.getItem('notas')) || [];
+
+    function exibirNotas() {
+      const lista = document.getElementById("listaNotas");
+      lista.innerHTML = '';
+
+      notas.forEach((nota, index) => {
+        const div = document.createElement("div");
+        div.className = 'note';
+        div.innerHTML = `
+          <div>${nota}</div>
+          <div class="note-buttons">
+            <button onclick="editarNota(${index})">✏️</button>
+            <button onclick="deletarNota(${index})">🗑️</button>
+          </div>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    function salvarNota() {
+      const texto = document.getElementById("novaNota").value.trim();
+      if (texto) {
+        notas.push(texto);
+        localStorage.setItem("notas", JSON.stringify(notas));
+        document.getElementById("novaNota").value = '';
+        exibirNotas();
+      }
+    }
+
+    function limparTexto() {
+      document.getElementById("novaNota").value = '';
+    }
+
+    function deletarNota(index) {
+      if (confirm("Deseja realmente excluir essa anotação?")) {
+        notas.splice(index, 1);
+        localStorage.setItem("notas", JSON.stringify(notas));
+        exibirNotas();
+      }
+    }
+
+    function editarNota(index) {
+      const novoTexto = prompt("Edite sua anotação:", notas[index]);
+      if (novoTexto !== null) {
+        notas[index] = novoTexto;
+        localStorage.setItem("notas", JSON.stringify(notas));
+        exibirNotas();
+      }
+    }
+
+    // Carregar ao iniciar
+    exibirNotas();
+  </script>
+
+</body>
+</html>

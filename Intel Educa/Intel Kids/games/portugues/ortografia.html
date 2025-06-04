@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Desafio Ortográfico - Intel Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #e0f7fa;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+        background: linear-gradient(to right, #d90429, #ef233c);
+        padding: 20px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #000000;
+      border: 2px solid #000000;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-home:hover {
+      background-color: #be3838;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #opcoes button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #ff0000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #opcoes button:hover {
+      background-color: #c04d4d;
+      color: white;
+    }
+
+    #telaFinal {
+      display: none;
+    }
+
+    .resultado {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .botao-reiniciar {
+      background-color: #c10000;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao-reiniciar:hover {
+      background-color: #007c91;
+    }
+
+    .voltar {
+      text-decoration: none;
+      color: white;
+      background-color: #ff0000;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .voltar:hover {
+      background-color: #ca4c4c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-home" href="index.html">Início</a>
+    <h1>Desafio Ortográfico</h1>
+    <p>Escolha a palavra escrita corretamente!</p>
+  </header>
+
+  <div class="container">
+    <div id="quiz">
+      <div id="pergunta"></div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="telaFinal">
+      <div class="resultado" id="resultado"></div>
+      <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar novamente</button>
+      <br><br>
+      <a class="voltar" href="index.html">Voltar para o início</a>
+    </div>
+  </div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "Qual palavra está escrita corretamente?",
+        opcoes: ["Concerto", "Conserto", "Conzerto", "Consserto"],
+        resposta: "Concerto"
+      },
+      {
+        pergunta: "Qual a forma correta?",
+        opcoes: ["Exceção", "Execessão", "Excessão", "Esceção"],
+        resposta: "Exceção"
+      },
+      {
+        pergunta: "Qual palavra está certa?",
+        opcoes: ["Enchergar", "Enxergar", "Encherga", "Inxergar"],
+        resposta: "Enxergar"
+      },
+      {
+        pergunta: "Assinale a opção correta:",
+        opcoes: ["Precissão", "Presisão", "Precisão", "Presizão"],
+        resposta: "Precisão"
+      },
+      {
+        pergunta: "Qual está escrita corretamente?",
+        opcoes: ["Reivindicar", "Revindicar", "Reinvindicar", "Revinvindicar"],
+        resposta: "Reivindicar"
+      },
+      {
+        pergunta: "Qual é a forma correta da palavra?",
+        opcoes: ["Beneficiente", "Beneficente", "Beneficiante", "Beneficense"],
+        resposta: "Beneficente"
+      },
+      {
+        pergunta: "Qual dessas está correta?",
+        opcoes: ["Absorver", "Absolver", "Abzolver", "Absorverr"],
+        resposta: "Absorver"
+      },
+      {
+        pergunta: "Qual palavra está escrita de forma certa?",
+        opcoes: ["Sussego", "Sossego", "Sossejo", "Sosego"],
+        resposta: "Sossego"
+      },
+      {
+        pergunta: "Qual forma está correta?",
+        opcoes: ["Empecilho", "Impecilho", "Empeçilho", "Empecio"],
+        resposta: "Empecilho"
+      },
+      {
+        pergunta: "Assinale a grafia correta:",
+        opcoes: ["Exagero", "Esagero", "Exagêro", "Exagero"],
+        resposta: "Exagero"
+      }
+    ];
+
+    let indicePergunta = 0;
+    let pontuacao = 0;
+
+    function mostrarPergunta() {
+      const atual = perguntas[indicePergunta];
+      document.getElementById("pergunta").textContent = atual.pergunta;
+
+      const opcoesDiv = document.getElementById("opcoes");
+      opcoesDiv.innerHTML = "";
+
+      atual.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.textContent = opcao;
+        botao.onclick = () => verificarResposta(opcao);
+        opcoesDiv.appendChild(botao);
+      });
+    }
+
+    function verificarResposta(respostaSelecionada) {
+      const respostaCorreta = perguntas[indicePergunta].resposta;
+      if (respostaSelecionada === respostaCorreta) {
+        pontuacao++;
+      }
+
+      indicePergunta++;
+      if (indicePergunta < perguntas.length) {
+        mostrarPergunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function mostrarResultado() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("telaFinal").style.display = "block";
+      document.getElementById("resultado").textContent =
+        `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+    }
+
+    function reiniciarQuiz() {
+      indicePergunta = 0;
+      pontuacao = 0;
+      document.getElementById("quiz").style.display = "block";
+      document.getElementById("telaFinal").style.display = "none";
+      mostrarPergunta();
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>

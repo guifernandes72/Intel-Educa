@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz sobre o Corpo Humano</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #ccf2f4);
+      color: #333;
+    }
+
+    header {
+        background: linear-gradient(to right, #04490d, #19d241);
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px #1a5707;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+      color: #e0f2f1;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #00a71c;
+      border: 2px solid #107c22;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .back-home:hover {
+      background-color: #328826;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #opcoes button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #19d241;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #opcoes button:hover {
+      background-color: #107c22;
+    }
+
+    #telaFinal {
+      display: none;
+    }
+
+    .resultado {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .botao-reiniciar {
+      background-color: #107c22;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao-reiniciar:hover {
+      background-color: #19d241;
+    }
+
+    .voltar {
+      text-decoration: none;
+      color: white;
+      background-color: #19d241;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .voltar:hover {
+      background-color: #107c22;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-home" href="index.html">🏠 Início</a>
+    <h1>Quiz sobre o Corpo Humano</h1>
+    <p>Escolha a alternativa correta!</p>
+  </header>
+
+  <div class="container">
+    <div id="quiz">
+      <div id="pergunta"></div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="telaFinal">
+      <div class="resultado" id="resultado"></div>
+      <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar novamente</button>
+      <br><br>
+      <a class="voltar" href="index.html">Voltar para o início</a>
+    </div>
+  </div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "Qual órgão do corpo humano é responsável pela respiração?",
+        opcoes: ["Coração", "Pulmão", "Rim", "Estômago"],
+        resposta: "Pulmão"
+      },
+      {
+        pergunta: "Qual o maior órgão do corpo humano?",
+        opcoes: ["Coração", "Pele", "Fígado", "Cérebro"],
+        resposta: "Pele"
+      },
+      {
+        pergunta: "Onde o sangue é filtrado no corpo humano?",
+        opcoes: ["Coração", "Rim", "Fígado", "Estômago"],
+        resposta: "Rim"
+      },
+      {
+        pergunta: "Qual sistema do corpo humano é responsável pela defesa contra infecções?",
+        opcoes: ["Sistema digestivo", "Sistema imunológico", "Sistema respiratório", "Sistema nervoso"],
+        resposta: "Sistema imunológico"
+      },
+      {
+        pergunta: "Qual parte do corpo humano é responsável pela coordenação dos movimentos?",
+        opcoes: ["Cérebro", "Rim", "Fígado", "Pulmão"],
+        resposta: "Cérebro"
+      },
+      {
+        pergunta: "Qual é o nome do músculo que bombeia o sangue pelo corpo?",
+        opcoes: ["Fígado", "Coração", "Rim", "Estômago"],
+        resposta: "Coração"
+      },
+      {
+        pergunta: "Qual é o nome do tecido que conecta os músculos aos ossos?",
+        opcoes: ["Ligamento", "Tendão", "Cartilagem", "Osso"],
+        resposta: "Tendão"
+      },
+      {
+        pergunta: "Onde se encontra a medula óssea no corpo humano?",
+        opcoes: ["Nos ossos", "No cérebro", "Nos músculos", "No fígado"],
+        resposta: "Nos ossos"
+      },
+      {
+        pergunta: "Qual é a função dos glóbulos vermelhos no sangue?",
+        opcoes: ["Transportar oxigênio", "Defender o corpo contra infecções", "Coagular o sangue", "Produzir hormônios"],
+        resposta: "Transportar oxigênio"
+      },
+      {
+        pergunta: "Qual é o maior osso do corpo humano?",
+        opcoes: ["Fêmur", "Úmero", "Rádio", "Tíbia"],
+        resposta: "Fêmur"
+      }
+    ];
+
+    let indicePergunta = 0;
+    let pontuacao = 0;
+
+    function mostrarPergunta() {
+      const atual = perguntas[indicePergunta];
+      document.getElementById("pergunta").textContent = atual.pergunta;
+
+      const opcoesDiv = document.getElementById("opcoes");
+      opcoesDiv.innerHTML = "";
+
+      atual.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.textContent = opcao;
+        botao.onclick = () => verificarResposta(opcao);
+        opcoesDiv.appendChild(botao);
+      });
+    }
+
+    function verificarResposta(respostaSelecionada) {
+      const respostaCorreta = perguntas[indicePergunta].resposta;
+      if (respostaSelecionada === respostaCorreta) {
+        pontuacao++;
+      }
+
+      indicePergunta++;
+      if (indicePergunta < perguntas.length) {
+        mostrarPergunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function mostrarResultado() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("telaFinal").style.display = "block";
+      document.getElementById("resultado").textContent =
+        `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+    }
+
+    function reiniciarQuiz() {
+      indicePergunta = 0;
+      pontuacao = 0;
+      document.getElementById("quiz").style.display = "block";
+      document.getElementById("telaFinal").style.display = "none";
+      mostrarPergunta();
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>
+    
