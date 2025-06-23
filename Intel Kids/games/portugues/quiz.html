@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Português - Intel Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+            background: linear-gradient(to right, #d90429, #ef233c);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 2px 2px #000000;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            color: white;
+        }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #opcoes button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #ff0000;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #opcoes button:hover {
+      background-color: #c94747;
+    }
+
+    #telaFinal {
+      display: none;
+    }
+
+    .resultado {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .botao-reiniciar {
+      background-color: #ff3333;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao-reiniciar:hover {
+      background-color: #d84a4a;
+    }
+
+    .voltar {
+            text-decoration: none;
+            color: white;
+            background-color: #c41515;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .voltar:hover {
+            background-color: #d61d1d;
+        }
+
+
+        
+        .back-home {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            color: #000000;
+            border: 2px solid #da1111;
+            padding: 8px 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-home:hover {
+            background-color: #ffcce0;
+        }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-home" href="index.html">Início</a>
+    <h1>Quiz</h1>
+    <p>Será que você já ficou craque no Português?  </p>
+</header>
+
+
+  <div class="container">
+    <div id="telaQuiz">
+      <div id="pergunta"></div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="telaFinal">
+      <div class="resultado">
+        Você acertou <span id="acertos"></span> de <span id="total"></span> perguntas!
+      </div>
+      <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar Novamente</button><br><br>
+      <a href="index.html" class="voltar">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <script>
+    const perguntasFacil = [
+      { pergunta: "Qual é o plural de 'cão'?", opcoes: ["cães", "cãoes", "caos", "canes"], respostaCorreta: 0 },
+      { pergunta: "Qual é a forma correta de escrever?", opcoes: ["Está chovendo", "Está chovendo", "Está chovendo", "Está chovendo"], respostaCorreta: 1 },
+      { pergunta: "Qual é o verbo da frase 'Eu vou à escola'?", opcoes: ["ir", "escola", "vou", "à"], respostaCorreta: 2 },
+      { pergunta: "Como se chama a parte da oração que diz quem faz a ação?", opcoes: ["sujeito", "predicado", "verbo", "objeto"], respostaCorreta: 0 },
+      { pergunta: "Qual dessas palavras é um substantivo?", opcoes: ["correr", "feliz", "bola", "verbo"], respostaCorreta: 2 },
+      { pergunta: "Qual é a forma correta de escrever?", opcoes: ["muito bem", "muito bem", "muito bem", "muito bem"], respostaCorreta: 0 },
+      { pergunta: "O que é um adjetivo?", opcoes: ["uma ação", "uma qualidade", "uma pessoa", "um lugar"], respostaCorreta: 1 },
+      { pergunta: "O que é um verbo?", opcoes: ["uma pessoa", "uma ação", "um lugar", "uma coisa"], respostaCorreta: 1 },
+      { pergunta: "Qual a forma correta: 'A gente' ou 'A gente'?", opcoes: ["A gente", "A gente", "A gente", "A gente"], respostaCorreta: 1 },
+      { pergunta: "O que é uma frase?", opcoes: ["um conjunto de palavras", "uma ação", "um substantivo", "um verbo"], respostaCorreta: 0 }
+    ];
+
+    const perguntasMedio = [
+      { pergunta: "Qual é o antônimo de 'alto'?", opcoes: ["baixo", "grande", "pequeno", "forte"], respostaCorreta: 0 },
+      { pergunta: "Qual é o plural de 'vovô'?", opcoes: ["vovôs", "vovôs", "vovôs", "vovôs"], respostaCorreta: 0 },
+      { pergunta: "Qual é a forma correta da frase: 'Eu ____ à escola.'?", opcoes: ["vou", "vai", "foram", "fui"], respostaCorreta: 0 },
+      { pergunta: "O que é uma vírgula?", opcoes: ["um sinal de pontuação", "um verbo", "um substantivo", "um adjetivo"], respostaCorreta: 0 },
+      { pergunta: "O que é uma preposição?", opcoes: ["uma palavra que liga termos", "um verbo", "um substantivo", "uma qualidade"], respostaCorreta: 0 },
+      { pergunta: "Qual é o plural de 'luz'?", opcoes: ["luzes", "luze", "luzas", "luzes"], respostaCorreta: 0 },
+      { pergunta: "A palavra 'falar' é um:", opcoes: ["verbo", "substantivo", "adjetivo", "pronome"], respostaCorreta: 0 },
+      { pergunta: "O que é um pronome?", opcoes: ["substitui o substantivo", "indica ação", "diz a qualidade", "indica lugar"], respostaCorreta: 0 },
+      { pergunta: "Qual dessas palavras é um adverbio?", opcoes: ["rápido", "feliz", "correr", "mais"], respostaCorreta: 3 },
+      { pergunta: "O que é um artigo?", opcoes: ["uma palavra que acompanha o substantivo", "uma palavra que indica lugar", "uma palavra que indica verbo", "uma palavra que indica pronome"], respostaCorreta: 0 }
+    ];
+
+    const perguntasDificil = [
+      { pergunta: "Qual é a conjugação correta do verbo 'falar' no presente do indicativo?", opcoes: ["falo", "fala", "falamos", "falar"], respostaCorreta: 0 },
+      { pergunta: "Qual é o antônimo de 'feliz'?", opcoes: ["triste", "alegre", "contento", "feliz"], respostaCorreta: 0 },
+      { pergunta: "Qual é a diferença entre 'por que' e 'porque'?", opcoes: ["Por que é usado em perguntas", "Porque é usado para explicar", "Ambos são iguais", "Ambos têm o mesmo significado"], respostaCorreta: 1 },
+      { pergunta: "A palavra 'pão' é:", opcoes: ["substantivo", "adjetivo", "verbo", "pronome"], respostaCorreta: 0 },
+      { pergunta: "Qual é a forma correta de usar a crase?", opcoes: ["a + a", "a + a", "a + a", "a + a"], respostaCorreta: 0 },
+      { pergunta: "Qual é o plural de 'fórum'?", opcoes: ["fóruns", "fóruns", "fóruns", "fórums"], respostaCorreta: 0 },
+      { pergunta: "Qual é o gênero da palavra 'menino'?", opcoes: ["masculino", "feminino", "neutro", "comum"], respostaCorreta: 0 },
+      { pergunta: "A palavra 'líder' é um:", opcoes: ["substantivo comum", "substantivo próprio", "adjetivo", "pronome"], respostaCorreta: 0 },
+      { pergunta: "Qual o tipo de frase é 'Eu vou à escola'? ", opcoes: ["afirmativa", "interrogativa", "exclamativa", "imperativa"], respostaCorreta: 0 },
+      { pergunta: "O que é uma interjeição?", opcoes: ["uma palavra que exprime emoção", "uma frase", "um verbo", "um substantivo"], respostaCorreta: 0 }
+    ];
+
+    let perguntas = [...perguntasFacil, ...perguntasMedio, ...perguntasDificil];
+    let indiceAtual = 0;
+    let acertos = 0;
+
+    function mostrarPergunta() {
+      if (indiceAtual < perguntas.length) {
+        const atual = perguntas[indiceAtual];
+        document.getElementById("pergunta").textContent = atual.pergunta;
+
+        const opcoesDiv = document.getElementById("opcoes");
+        opcoesDiv.innerHTML = "";
+        atual.opcoes.forEach((opcao, index) => {
+          const botao = document.createElement("button");
+          botao.textContent = opcao;
+          botao.onclick = () => {
+            if (index === atual.respostaCorreta) acertos++;
+            indiceAtual++;
+            mostrarPergunta();
+          };
+          opcoesDiv.appendChild(botao);
+        });
+      } else {
+        document.getElementById("telaQuiz").style.display = "none";
+        document.getElementById("telaFinal").style.display = "block";
+        document.getElementById("acertos").textContent = acertos;
+        document.getElementById("total").textContent = perguntas.length;
+      }
+    }
+
+    function reiniciarQuiz() {
+      indiceAtual = 0;
+      acertos = 0;
+      document.getElementById("telaFinal").style.display = "none";
+      document.getElementById("telaQuiz").style.display = "block";
+      mostrarPergunta();
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>

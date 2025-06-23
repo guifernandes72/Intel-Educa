@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Estudante - Intel Educa</title>
+  <link rel="stylesheet" href="../styles/style.css"/>
+  <link rel="stylesheet" href="../styles/login-estudante.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">Intel<span>Educa</span></div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="login-estudante.html">Login Estudante</a></li>
+          <li><a href="../educador/login-educador.html">Login Educador</a></li>
+          <li><a href="cadastroAluno.html" class="btn">Cadastre-se</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Login do Estudante</h1>
+
+ <!-- Dentro da login-container -->
+<div class="login-container">
+  <h2>Acesse sua Conta</h2>
+  <form>
+    <input type="email" placeholder="E-mail" required />
+    <input type="password" placeholder="Senha" required />
+    <center>
+      <div class="botaoLogin">
+        <a href="dashboard-estudante.html">Entrar</a>
+      </div>
+    </center>
+
+    <!-- Links de Termos e Privacidade -->
+    <p style="margin-top: 1rem; font-size: 0.85rem;">
+      Ao acessar, você concorda com nossos 
+      <a href="#" onclick="abrirModal('termos')">Termos de Uso</a> e 
+      <a href="#" onclick="abrirModal('termos')">Política de Privacidade</a>.
+    </p>
+  </form>
+
+  <p>Não tem conta? <a href="cadastroAluno.html">Cadastre-se aqui</a></p>
+
+  <!-- Modal -->
+  <div id="modalTermos" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2 id="tituloModal">Termos de Uso</h2>
+      <div id="textoModal">
+        <p>Este é um exemplo de Termos de Uso. Aqui você pode adicionar as regras e responsabilidades relacionadas ao uso da plataforma Intel Educa.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Modal -->
+
+  
+
+</body>
+</html>
+
+
+<style>
+
+  
+
+</style>
+
+<script>
+  function abrirModal(tipo) {
+    const modal = document.getElementById("modalTermos");
+    const titulo = document.getElementById("tituloModal");
+    const texto = document.getElementById("textoModal");
+
+    if (tipo === 'termos') {
+      titulo.innerText = "Termos de Uso";
+      texto.innerHTML = `
+  <p><strong>TERMOS DE USO – LOGIN DO ESTUDANTE</strong></p>
+
+  <p><strong>1. Aceitação dos Termos</strong><br>
+  Ao utilizar o sistema por meio do login de estudante, o usuário concorda automaticamente com todos os termos e condições descritos neste documento. Caso não concorde com algum item, a utilização do sistema não deve ser realizada.</p>
+
+  <p><strong>2. Cadastro e Acesso</strong><br>
+  O acesso ao sistema é exclusivo para estudantes devidamente cadastrados.<br>
+  O estudante é responsável por fornecer informações corretas e atualizadas no momento do cadastro.<br>
+  O login e a senha são de uso pessoal e intransferível. O estudante é responsável por manter esses dados em sigilo.</p>
+
+  <p><strong>3. Uso da Conta</strong><br>
+  A conta estudantil é destinada exclusivamente para fins educacionais e acadêmicos.<br>
+  É proibido compartilhar o acesso com outras pessoas ou utilizar a conta de outro estudante.<br>
+  O uso indevido da conta poderá resultar em advertência, bloqueio ou exclusão do acesso.</p>
+
+  <p><strong>4. Privacidade e Proteção de Dados</strong><br>
+  Os dados fornecidos no cadastro serão utilizados apenas para fins educacionais e administrativos.<br>
+  A instituição ou plataforma compromete-se a manter os dados protegidos, respeitando a privacidade dos usuários.</p>
+
+  <p><strong>5. Conduta do Usuário</strong><br>
+  Espera-se que o estudante utilize o sistema com respeito, responsabilidade e ética.<br>
+  É proibido o envio ou publicação de conteúdos ofensivos, discriminatórios, ilegais ou que infrinjam os direitos de terceiros.<br>
+  Qualquer comportamento inadequado poderá levar à suspensão ou remoção da conta.</p>
+
+  <p><strong>6. Responsabilidades</strong><br>
+  A plataforma não se responsabiliza por danos ou prejuízos causados por mau uso do sistema ou por falhas externas (como instabilidade de internet).<br>
+  O estudante é responsável por todas as ações realizadas com seu login.</p>
+
+  <p><strong>7. Alterações dos Termos</strong><br>
+  Estes termos podem ser atualizados a qualquer momento.<br>
+  A continuidade do uso da conta após alterações será considerada como aceitação automática das novas condições.</p>
+
+  <p><strong>8. Cancelamento ou Suspensão de Conta</strong><br>
+  A conta do estudante poderá ser suspensa ou cancelada em caso de descumprimento destes termos.<br>
+  O estudante pode solicitar a exclusão da conta, desde que não haja pendências acadêmicas ou administrativas.</p>
+
+  <p><strong>9. Suporte e Contato</strong><br>
+  Em caso de dúvidas, problemas de acesso ou questões relacionadas à conta, o estudante deve entrar em contato com o suporte técnico da instituição ou responsável pela plataforma.</p>
+`;
+
+    } else {
+      titulo.innerText = "Política de Privacidade";
+      texto.innerHTML = "<p>Valorizamos sua privacidade. Seus dados são protegidos e utilizados apenas conforme descrito em nossa política.</p>";
+    }
+
+    modal.style.display = "block";
+  }
+
+  function fecharModal() {
+    document.getElementById("modalTermos").style.display = "none";
+  }
+
+  // Fecha ao clicar fora do modal
+  window.onclick = function(event) {
+    const modal = document.getElementById("modalTermos");
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>

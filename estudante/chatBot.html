@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat - Edu, Assistente Virtual</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/edu.css">
+    
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard-estudante.html">Voltar ao Painel</a>
+  </header>
+
+  <!-- Chat container -->
+  <div class="chat-container">
+    <div class="chat-header">💬 Converse com o Edu</div>
+    <div class="chat-box" id="chat-box">
+      <!-- Mensagens aparecerão aqui -->
+    </div>
+    <div class="input-area">
+      <input type="text" id="user-input" placeholder="Digite sua pergunta..." />
+      <button onclick="enviarMensagem()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chat-box");
+    const input = document.getElementById("user-input");
+
+    // Função para adicionar mensagens ao chat
+    function appendMessage(msg, sender) {
+      const div = document.createElement("div");
+      div.className = sender === "user" ? "user" : "bot";
+      const p = document.createElement("p");
+      p.textContent = msg;
+      div.appendChild(p);
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // Função para determinar a resposta do bot
+    function getBotResponse(input) {
+      input = input.toLowerCase();
+      if (input.includes("olá") || input.includes("oi") || input.includes("ola") ){
+        return "Olá! Eu sou o Edu, seu assistente virtual do Intel Educa. Como posso te ajudar hoje?!";
+      } else if (input.includes("matérias") || input.includes("disciplinas")) {
+        return "Você pode acessar as matérias selecionando o ano escolar na página principal.";
+      } else if (input.includes("ajuda") || input.includes("dúvida")) 
+        return "Claro! Me diga sua dúvida e eu tentarei te ajudar.";
+        else if (input.includes("premium")){
+            return "Sua assinatura premium está ativa e será válida até o dia 13/05/2025."
+        }
+        else if (input.includes("contato")) {
+            return "O contato do Intel Educa é (11) 1234-5678"
+        }
+        else if (input.includes("email") || input.includes("suporte")){
+            return "Para suporte, entre em contato pelo e-mail: suporte@inteleduca.com"
+        }
+       else {
+        return "Desculpe, ainda estou aprendendo. Tente perguntar de outra forma?";
+      }
+    }
+
+    // Função que será chamada ao clicar no botão
+    function enviarMensagem() {
+      const userText = input.value.trim();
+      if (!userText) return;
+      appendMessage(userText, "user");
+      input.value = "";
+
+      setTimeout(() => {
+        const botReply = getBotResponse(userText);
+        appendMessage(botReply, "bot");
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

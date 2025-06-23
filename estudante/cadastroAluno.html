@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro - Intel Educa</title>
+  <link rel="stylesheet" href="styles/style.css"/>
+  <link rel="stylesheet" href="../styles/cadastroAluno.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">Intel<span>Educa</span></div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="login-estudante.html">Login Estudante</a></li>
+          <li><a href="../educador/login-educador.html">Login Educador</a></li>
+          <li><a href="cadastroAluno.html" class="btn">Cadastre-se</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <h1>Cadastro do Estudante</h1>
+
+  <div class="login-container">
+    <h2>Crie sua Conta</h2>
+    <form>
+      <input type="text" placeholder="Nome completo" required />
+      <input type="email" placeholder="E-mail" required />
+      <input type="text" placeholder="CPF" required />
+      <input type="password" placeholder="Senha" required />
+      <center><a href="login-estudante.html" class="btn-primary" id="cadastrar">Cadastrar</a></center>
+    </form>
+    <p>Você é educador? <a href="../educador/cadastroEducador.html">Faça seu Cadastro</a></p>
+  </div>
+
+</body>
+</html>
+
+
+<style>
+
+#cadastrar{
+  color: rgb(255, 255, 255);
+  margin-top: 100px;
+  text-decoration: none;
+  margin-bottom: 100px;
+}
+
+input{
+  margin-bottom: 20px;
+}
+
+
+
+</style>

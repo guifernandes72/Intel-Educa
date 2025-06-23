@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../styles/educador/anotacoes.css">
+  <title>Intel Educa | Anotações</title>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="dashboard.html"><button class="logout">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <h1>📝 Anotações da Aula</h1>
+
+    <textarea id="novaNota" placeholder="Escreva aqui suas anotações..."></textarea>
+    
+    <div class="controls">
+      <button onclick="salvarNota()">Salvar</button>
+      <button onclick="limparTexto()">Limpar</button>
+    </div>
+
+    <div class="notes-list" id="listaNotas"></div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+  <script>
+    let notas = JSON.parse(localStorage.getItem('notas')) || [];
+
+    function exibirNotas() {
+      const lista = document.getElementById("listaNotas");
+      lista.innerHTML = '';
+
+      notas.forEach((nota, index) => {
+        const div = document.createElement("div");
+        div.className = 'note';
+        div.innerHTML = `
+          <div>${nota}</div>
+          <div class="note-buttons">
+            <button onclick="editarNota(${index})">✏️</button>
+            <button onclick="deletarNota(${index})">🗑️</button>
+          </div>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    function salvarNota() {
+      const texto = document.getElementById("novaNota").value.trim();
+      if (texto) {
+        notas.push(texto);
+        localStorage.setItem("notas", JSON.stringify(notas));
+        document.getElementById("novaNota").value = '';
+        exibirNotas();
+      }
+    }
+
+    function limparTexto() {
+      document.getElementById("novaNota").value = '';
+    }
+
+    function deletarNota(index) {
+      if (confirm("Deseja realmente excluir essa anotação?")) {
+        notas.splice(index, 1);
+        localStorage.setItem("notas", JSON.stringify(notas));
+        exibirNotas();
+      }
+    }
+
+    function editarNota(index) {
+      const novoTexto = prompt("Edite sua anotação:", notas[index]);
+      if (novoTexto !== null) {
+        notas[index] = novoTexto;
+        localStorage.setItem("notas", JSON.stringify(notas));
+        exibirNotas();
+      }
+    }
+
+    // Carregar ao iniciar
+    exibirNotas();
+  </script>
+
+</body>
+</html>

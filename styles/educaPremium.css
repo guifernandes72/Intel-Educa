@@ -1,0 +1,121 @@
+:root {
+      --azul1: #0d47a1;
+      --azul2: #2196f3;
+      --azul-claro: #e3f2fd;
+      --branco: #ffffff;
+      --cinza: #f4f4f4;
+      --sombra: rgba(0, 0, 0, 0.1);
+    }
+
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fc;
+    }
+    header {
+      background: linear-gradient(90deg, var(--azul1), var(--azul2));
+      color: white;
+      padding: 20px 40px;
+      font-size: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px var(--sombra);
+    }
+
+    header .logo {
+      font-weight: bold;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    header a:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #f3c0e8;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #0b3d91;
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+    .premium-info {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .premium-info div {
+      background-color: #f5f7fa;
+      padding: 30px;
+      border-radius: 8px;
+      width: 30%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .premium-info div h3 {
+      color: #0b3d91;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+    .premium-info div p {
+      color: #555;
+      font-size: 16px;
+    }
+    .cta-button {
+      display: block;
+      margin: 30px auto;
+      background-color: #0b3d91;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      width: 200px;
+      transition: background-color 0.3s;
+    }
+    .cta-button:hover {
+      background-color: #605de2;
+    }
+
+    @media (max-width: 768px) {
+      .premium-info div {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .premium-info div {
+        width: 100%;
+      }
+    }

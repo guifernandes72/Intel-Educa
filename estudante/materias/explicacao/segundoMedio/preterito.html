@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verbo: Pretérito Perfeito e Imperfeito</title>
+  <style>
+    
+    .exercicio form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .exercicio label {
+    font-size: 18px;
+    color: var(--cinza-escuro);
+  }
+
+  .exercicio input {
+    padding: 1px;
+    font-size: 16px;
+    border: 2px solid var(--azul1);
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    display:flex;
+  }
+
+  .exercicio input:focus {
+    border-color: var(--azul2);
+  }
+
+
+  button{
+    background-color: var(--azul1);
+    color: var(--branco);
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover{
+    background-color: #1e2d4d;
+  }
+
+
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .logout:hover {
+      background-color: #1e2d4d;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .exercicio {
+      background-color: #e8ecf3;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+
+    .voltar {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .voltar a {
+      background-color: var(--azul2);
+      color: var(--branco);
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .voltar a:hover {
+      background-color: #1e2d4d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Verbo: Pretérito Perfeito e Imperfeito</h1>
+
+    <section>
+      <h2>📘 O que é o Pretérito?</h2>
+      <p>O pretérito é um tempo verbal usado para expressar ações que ocorreram no passado. Existem duas formas mais comuns: <strong>pretérito perfeito</strong> e <strong>pretérito imperfeito</strong>.</p>
+    </section>
+
+    <section>
+      <h2>✅ Pretérito Perfeito</h2>
+      <p>Usamos o <strong>pretérito perfeito</strong> para indicar ações que aconteceram e foram <strong>concluídas no passado</strong>.</p>
+      <p><strong>Exemplos:</strong></p>
+      <ul>
+        <li>Ela <em>viajou</em> para Salvador.</li>
+        <li>Eu <em>comi</em> muito ontem.</li>
+        <li>Você <em>terminou</em> o dever?</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🔁 Pretérito Imperfeito</h2>
+      <p>O <strong>pretérito imperfeito</strong> indica ações <strong>habituais, contínuas ou inacabadas</strong> no passado.</p>
+      <p><strong>Exemplos:</strong></p>
+      <ul>
+        <li>Ela <em>viajava</em> com frequência.</li>
+        <li>Eu <em>comia</em> muito quando era criança.</li>
+        <li>Chovia todos os dias naquela semana.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🧠 Dica Rápida:</h2>
+      <ul>
+        <li><strong>Pretérito Perfeito:</strong> ação finalizada (ex: "Ele falou").</li>
+        <li><strong>Pretérito Imperfeito:</strong> ação habitual ou duradoura (ex: "Ele falava").</li>
+      </ul>
+    </section>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarExercicios(event)">
+        <ol>
+          <li>
+            Classifique as frases como "perfeito" ou "imperfeito":
+            <ul>
+              <li>a) Eu <em>corria</em> todas as manhãs.
+                <input type="text" id="pergunta1" placeholder="Resposta...">
+              </li>
+              <li>b) Ontem ela <em>cantou</em> muito bem.
+                <input type="text" id="pergunta2" placeholder="Resposta...">
+              </li>
+            </ul>
+          </li>
+          <li>
+            Transforme para o pretérito imperfeito:
+            <ul>
+              <li>a) Ela <em>leu</em> o livro rapidamente.
+                <input type="text" id="pergunta3" placeholder="Resposta...">
+              </li>
+              <li>b) Nós <em>fizemos</em> o trabalho ontem.
+                <input type="text" id="pergunta4" placeholder="Resposta...">
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+    
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+    
+
+    <div class="voltar">
+      <a href="../../portugues.html">⬅️ Voltar à Página Principal</a>
+    </div>
+  </main>
+
+</body>
+</html>
+
+<script>
+  function verificarExercicios(event) {
+    event.preventDefault();
+
+    let resultado = '';
+
+    const pergunta1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+    const pergunta2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+    const pergunta3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+    const pergunta4 = document.getElementById('pergunta4').value.trim().toLowerCase();
+
+    // Respostas corretas:
+    // 1a) imperfeito
+    // 1b) perfeito
+    // 2a) lia
+    // 2b) fazíamos
+
+    // Pergunta 1
+    if (pergunta1 === 'imperfeito') {
+      resultado += '<p><strong>1a) Correto!</strong> "Corria" é pretérito imperfeito.</p>';
+    } else {
+      resultado += '<p><strong>1a) Incorreto.</strong> A resposta certa é "imperfeito".</p>';
+    }
+
+    if (pergunta2 === 'perfeito') {
+      resultado += '<p><strong>1b) Correto!</strong> "Cantou" é pretérito perfeito.</p>';
+    } else {
+      resultado += '<p><strong>1b) Incorreto.</strong> A resposta certa é "perfeito".</p>';
+    }
+
+    // Pergunta 2
+    if (pergunta3 === 'lia') {
+      resultado += '<p><strong>2a) Correto!</strong> O pretérito imperfeito de "leu" é "lia".</p>';
+    } else {
+      resultado += '<p><strong>2a) Incorreto.</strong> A resposta certa é "lia".</p>';
+    }
+
+    if (pergunta4 === 'fazíamos') {
+      resultado += '<p><strong>2b) Correto!</strong> O pretérito imperfeito de "fizemos" é "fazíamos".</p>';
+    } else {
+      resultado += '<p><strong>2b) Incorreto.</strong> A resposta certa é "fazíamos".</p>';
+    }
+
+    document.getElementById('resultado').innerHTML = resultado;
+  }
+</script>

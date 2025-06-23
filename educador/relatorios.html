@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Relatório de Desempenho</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <link rel="stylesheet" href="../styles/educador/relatorio.css">
+  <style>
+   
+  </style>
+</head>
+<body>
+  <h1>Relatório de Desempenho</h1>
+  <canvas id="graficoNotas" width="400" height="200"></canvas>
+  <button onclick="gerarPDF()">Baixar Relatório PDF</button>
+
+  <script src="relatorio.js"></script>
+</body>
+</html>
+
+
+<script>
+    const dados = {
+  nome: "João da Silva",
+  materias: {
+    Matemática: 7.5,
+    Português: 9.0,
+    História: 6.0,
+    Ciências: 8.0,
+    Geografia: 6.5
+  }
+};
+
+// Montar gráfico
+const ctx = document.getElementById("graficoNotas").getContext("2d");
+const grafico = new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: Object.keys(dados.materias),
+    datasets: [{
+      label: 'Nota por Matéria',
+      data: Object.values(dados.materias),
+      backgroundColor: '#3B82F6',
+      borderRadius: 8
+    }]
+  },
+  options: {
+    scales: {
+      y: { beginAtZero: true, max: 10 }
+    }
+  }
+});
+
+// Gerar PDF com jsPDF
+async function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  doc.setFontSize(18);
+  doc.text("Relatório de Desempenho", 20, 20);
+  doc.setFontSize(12);
+  doc.text(`Nome: ${dados.nome}`, 20, 30);
+
+  let y = 50;
+  for (let [materia, nota] of Object.entries(dados.materias)) {
+    doc.text(`${materia}: ${nota}`, 20, y);
+    y += 10;
+  }
+
+  doc.save("relatorio-desempenho.pdf");
+}
+
+</script>

@@ -1,0 +1,132 @@
+body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background: #f3f4f7;
+      color: #333;
+    }
+
+    header {
+      background: #0e4b8f;
+      color: #fff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 20px;
+    }
+
+    header nav a:hover {
+      color: #f3c0e8;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 36px;
+      color: #0e4b8f;
+      margin-bottom: 30px;
+    }
+
+    /* Aula ao Vivo - Tela de Educador */
+    .live-session {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .live-stream {
+      width: 100%;
+      max-width: 800px;
+      height: 450px;
+      background: #333;
+      border-radius: 12px;
+    }
+
+    .chat {
+      width: 100%;
+      max-width: 800px;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-header {
+      font-size: 20px;
+      font-weight: bold;
+      color: #0e4b8f;
+      margin-bottom: 10px;
+    }
+
+    .messages {
+      max-height: 300px;
+      overflow-y: scroll;
+      background: #fff;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .message {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .message.student {
+      color: #2dce89;
+    }
+
+    .message.educator {
+      color: #ff6f61;
+      text-align: right;
+    }
+
+    .input-message {
+      display: flex;
+      gap: 10px;
+    }
+
+    .input-message input {
+      width: 80%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .input-message button {
+      padding: 10px 20px;
+      background-color: #0e4b8f;
+      color: white;
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .input-message button:hover {
+      background-color: #2dce89;
+    }

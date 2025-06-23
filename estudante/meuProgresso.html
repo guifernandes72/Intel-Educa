@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../styles/meu-progresso.css">
+  <title>Progresso | Intel Educa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard-estudante.html">Voltar ao Painel</a>
+  </header>
+
+  <main>
+    <h2>Meu Progresso</h2>
+
+    <div class="progress-cards">
+      <!-- Progress Card for Mathematics -->
+
+      <h3>Matemática</h3>
+      <div class="progress-card">
+      
+        <p>Você avançou bastante em Matemática! Continue assim!</p>
+        <div class="progress-bar">
+          <div class="progress" data-progress="80"></div>
+        </div>
+      </div>
+
+      <!-- Progress Card for Portuguese -->
+      <div class="progress-card">
+        <h3>História</h3>
+        <p>Bom progresso! Faltam poucos ajustes para melhorar ainda mais!</p>
+        <div class="progress-bar">
+          <div class="progress" data-progress="60"></div>
+        </div>
+      </div>
+
+      <!-- Progress Card for History -->
+      <div class="progress-card">
+        <h3>Português</h3>
+        <p>Você não está indo muito bem em português!</p>
+        <div class="progress-bar">
+          <div class="progress" data-progress="40"></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+      <button class="button" id="showModalBtn">Ver Mais Detalhes</button>
+    </div>
+  </main>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="modal-body">
+        <h3>Detalhes do Progresso</h3>
+
+        <h4>Matemática</h4>
+        <div class="progress-bar">
+          <div class="progress" data-progress="80"></div>
+        </div>
+      
+        
+        <h4>História</h4>
+        <div class="progress-bar">
+          <div class="progress" data-progress="60"></div>
+        </div>
+
+
+        <h4>Português</h4> 
+        <div class="progress-bar">
+          <div class="progress" data-progress="40"></div>
+        </div>
+     
+
+        <p>Continue trabalhando duro para alcançar seus objetivos! Você está indo muito bem!</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Abrir Modal
+    const modal = document.getElementById("myModal");
+    const btn = document.getElementById("showModalBtn");
+    const span = document.getElementsByClassName("close")[0];
+
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // Fechar Modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Forme Palavras - Intel Kids</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #fff0f0, #ffe5e5);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #d90429, #ef233c);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2em;
+      color: #fff;
+      text-shadow: 2px 2px #8b0000;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #d90429;
+      border: 2px solid #ef233c;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-home:hover {
+      background-color: #ffccd5;
+    }
+
+    .game-area {
+      max-width: 800px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .scrambled-letters {
+      font-size: 2em;
+      letter-spacing: 15px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1.2em;
+      width: 60%;
+      border-radius: 10px;
+      border: 2px solid #ef233c;
+      outline: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1em;
+      background-color: #d90429;
+      color: #fff;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #ef233c;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+
+    .message.ok {
+      color: green;
+    }
+
+    .message.err {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-home">⬅ Voltar</a>
+    <h1>Forme a Palavra Correta!</h1>
+  </header>
+
+  <div class="game-area">
+    <div class="scrambled-letters" id="scrambled">GRAÇOMA</div>
+    <input type="text" id="userInput" placeholder="Digite a palavra correta">
+    <br>
+    <button onclick="verificar()">Verificar</button>
+    <div class="message" id="msg"></div>
+  </div>
+
+  <script>
+    const palavras = [
+      { embaralhada: "ORCHARCAO", correta: "CACHORRO" },
+      { embaralhada: "SACLHOE", correta: "ESCOLHA" },
+      { embaralhada: "SLBRIA", correta: "BRASIL" },
+      { embaralhada: "VETAGA", correta: "GAVETA"},
+      { embaralhada: "LGEVAS", correta: "SELVAG" },
+      { embaralhada: "CIADERA", correta: "CADEIRA" },
+      { embaralhada: "ROCAMUDOTP", correta: "COMPUTADOR" }
+    ];
+
+    let indice = 0;
+
+    function mostrarPalavra() {
+      document.getElementById("scrambled").innerText = palavras[indice].embaralhada;
+      document.getElementById("userInput").value = "";
+      document.getElementById("msg").innerText = "";
+    }
+
+    function verificar() {
+      const resposta = document.getElementById("userInput").value.trim().toUpperCase();
+      const correta = palavras[indice].correta;
+
+      const msg = document.getElementById("msg");
+      if (resposta === correta) {
+        msg.innerText = "Muito bem! Você acertou! 🎉";
+        msg.className = "message ok";
+        indice = (indice + 1) % palavras.length;
+        setTimeout(mostrarPalavra, 2000);
+      } else {
+        msg.innerText = "Tente novamente! 😅";
+        msg.className = "message err";
+      }
+    }
+
+    mostrarPalavra();
+  </script>
+</body>
+</html>

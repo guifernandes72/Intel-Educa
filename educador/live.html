@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../styles/educador/live.css">
+  <title>Iniciar Live | Intel Educa</title>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎥 Intel Educa</div>
+    <a href="dashboard.html"><button class="back-btn">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <div class="video-section">
+      <video id="video" autoplay playsinline muted></video>
+      <div class="controls">
+        <button class="start-btn" onclick="iniciarCamera()">Ativar Câmera</button>
+        <button class="stop-btn" onclick="pararCamera()">Desligar Câmera</button>
+      </div>
+    </div>
+
+    <div class="chat-section">
+      <h3>💬 Chat da Live</h3>
+      <div class="chat-messages" id="chat"></div>
+      <div class="chat-input">
+        <input type="text" id="mensagem" placeholder="Digite sua mensagem..." />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+  <script>
+    const video = document.getElementById('video');
+    let stream;
+
+    async function iniciarCamera() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        video.srcObject = stream;
+      } catch (error) {
+        alert('Erro ao acessar a câmera: ' + error.message);
+      }
+    }
+
+    function pararCamera() {
+      if (stream) {
+        const tracks = stream.getTracks();
+        tracks.forEach(track => track.stop());
+        video.srcObject = null;
+      }
+    }
+
+    function enviarMensagem() {
+      const input = document.getElementById('mensagem');
+      const chat = document.getElementById('chat');
+      const texto = input.value.trim();
+
+      if (texto !== '') {
+        const msg = document.createElement('div');
+        msg.innerText = `Você: ${texto}`;
+        msg.style.marginBottom = '8px';
+        chat.appendChild(msg);
+        input.value = '';
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }
+  </script>
+
+</body>
+</html>

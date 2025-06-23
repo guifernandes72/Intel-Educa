@@ -1,0 +1,136 @@
+ /* Header */
+.header {
+  background-color: #0f172a;
+  color: white;
+  padding: 1.2rem 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #facc15;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.nav-list a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-list .btn {
+  background-color: #facc15;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+.nav-list .btn:hover {
+  background-color: #eab308;
+}
+
+/* Body */
+body {
+  background-color: #e2e8f0;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  color: #0f172a;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+/* Login Container */
+.login-container {
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fffdf4;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-container input {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+#btn-primario {
+  background-color: #0f172a;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#btn-primario:hover {
+  background-color: #1e293b;
+  text-decoration: none;
+}
+
+.login-container p {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.login-container a {
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}

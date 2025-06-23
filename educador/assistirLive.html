@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="../styles/assistirLive.css">
+  <title>Assistir Live | Intel Educa</title>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎥 Assistindo Live</div>
+    <a href="painelEstudante.html"><button class="chat-input button">Voltar</button></a>
+  </header>
+
+  <div class="container">
+    <div class="video-view">
+      <h3>📡 Ao Vivo com o Professor</h3>
+      <video id="remoteVideo" autoplay playsinline controls></video>
+    </div>
+
+    <div class="chat-section">
+      <h3>💬 Chat da Live</h3>
+      <div class="chat-messages" id="chatBox"></div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Escreva sua mensagem..." />
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Intel Educa. Todos os direitos reservados.</div>
+
+  <script>
+    // Simulação de chat local
+    function enviarMensagem() {
+      const input = document.getElementById("chatInput");
+      const chat = document.getElementById("chatBox");
+      const texto = input.value.trim();
+      if (texto !== '') {
+        const msg = document.createElement("div");
+        msg.textContent = `Você: ${texto}`;
+        msg.style.marginBottom = '8px';
+        chat.appendChild(msg);
+        input.value = '';
+        chat.scrollTop = chat.scrollHeight;
+      }
+    }
+
+    // Simulação do vídeo remoto com uma gravação (substituir por WebRTC depois)
+    const remoteVideo = document.getElementById('remoteVideo');
+
+    // Para testes: usar um vídeo demo como se fosse a live
+    remoteVideo.src = 'https://www.w3schools.com/html/mov_bbb.mp4'; // Você pode usar stream real aqui futuramente
+
+    // Em produção: conectar o remoteVideo.srcObject = stream via WebRTC
+  </script>
+
+</body>
+</html>

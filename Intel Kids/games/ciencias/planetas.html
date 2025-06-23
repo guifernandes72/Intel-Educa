@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz sobre Planetas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #ccf2f4);
+      color: #333;
+    }
+
+    header {
+        background: linear-gradient(to right, #04490d, #19d241);
+        padding: 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px #1a5707;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+      color: #e0f2f1;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #00a71c;
+      border: 2px solid #107c22;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .back-home:hover {
+      background-color: #328826;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #opcoes button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #19d241;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #opcoes button:hover {
+      background-color: #107c22;
+    }
+
+    #telaFinal {
+      display: none;
+    }
+
+    .resultado {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .botao-reiniciar {
+      background-color: #107c22;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao-reiniciar:hover {
+      background-color: #19d241;
+    }
+
+    .voltar {
+      text-decoration: none;
+      color: white;
+      background-color: #19d241;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .voltar:hover {
+      background-color: #107c22;
+    }
+
+    .planeta-imagem {
+      width: 200px;
+      height: 200px;
+      margin: 20px 0;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-home" href="index.html">🏠 Início</a>
+    <h1>Quiz sobre Planetas</h1>
+    <p>Escolha o planeta que você acha que é o correto!</p>
+  </header>
+
+  <div class="container">
+    <div id="quiz">
+      <div id="pergunta"></div>
+      <div id="imagem"></div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="telaFinal">
+      <div class="resultado" id="resultado"></div>
+      <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar novamente</button>
+      <br><br>
+      <a class="voltar" href="index.html">Voltar para o início</a>
+    </div>
+  </div>
+
+  <script>
+    const perguntas = [
+      {
+        pergunta: "Qual é o planeta da imagem?",
+        imagem: "https://example.com/imagens/terra.jpg", // Substitua pelo link real da imagem da Terra
+        opcoes: ["Mercúrio", "Terra", "Vênus", "Júpiter"],
+        resposta: "Terra"
+      },
+      {
+        pergunta: "Qual planeta é conhecido como o 'Planeta Vermelho'?",
+        imagem: "https://example.com/imagens/marte.jpg", // Substitua pelo link real da imagem de Marte
+        opcoes: ["Marte", "Saturno", "Júpiter", "Urano"],
+        resposta: "Marte"
+      },
+      {
+        pergunta: "Qual é o maior planeta do nosso sistema solar?",
+        imagem: "https://example.com/imagens/jupiter.jpg", // Substitua pelo link real da imagem de Júpiter
+        opcoes: ["Saturno", "Júpiter", "Netuno", "Urano"],
+        resposta: "Júpiter"
+      },
+      {
+        pergunta: "Qual é o planeta que possui os anéis mais famosos?",
+        imagem: "https://example.com/imagens/saturno.jpg", // Substitua pelo link real da imagem de Saturno
+        opcoes: ["Saturno", "Urano", "Vênus", "Netuno"],
+        resposta: "Saturno"
+      },
+      {
+        pergunta: "Qual é o planeta mais distante do Sol?",
+        imagem: "https://example.com/imagens/netuno.jpg", // Substitua pelo link real da imagem de Netuno
+        opcoes: ["Plutão", "Netuno", "Urano", "Saturno"],
+        resposta: "Netuno"
+      }
+    ];
+
+    let indicePergunta = 0;
+    let pontuacao = 0;
+
+    function mostrarPergunta() {
+      const atual = perguntas[indicePergunta];
+      document.getElementById("pergunta").textContent = atual.pergunta;
+
+      const imagemDiv = document.getElementById("imagem");
+      imagemDiv.innerHTML = `<img class="planeta-imagem" src="${atual.imagem}" alt="Imagem do planeta">`;
+
+      const opcoesDiv = document.getElementById("opcoes");
+      opcoesDiv.innerHTML = "";
+
+      atual.opcoes.forEach(opcao => {
+        const botao = document.createElement("button");
+        botao.textContent = opcao;
+        botao.onclick = () => verificarResposta(opcao);
+        opcoesDiv.appendChild(botao);
+      });
+    }
+
+    function verificarResposta(respostaSelecionada) {
+      const respostaCorreta = perguntas[indicePergunta].resposta;
+      if (respostaSelecionada === respostaCorreta) {
+        pontuacao++;
+      }
+
+      indicePergunta++;
+      if (indicePergunta < perguntas.length) {
+        mostrarPergunta();
+      } else {
+        mostrarResultado();
+      }
+    }
+
+    function mostrarResultado() {
+      document.getElementById("quiz").style.display = "none";
+      document.getElementById("telaFinal").style.display = "block";
+      document.getElementById("resultado").textContent =
+        `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+    }
+
+    function reiniciarQuiz() {
+      indicePergunta = 0;
+      pontuacao = 0;
+      document.getElementById("quiz").style.display = "block";
+      document.getElementById("telaFinal").style.display = "none";
+      mostrarPergunta();
+    }
+
+    mostrarPergunta();
+  </script>
+</body>
+</html>

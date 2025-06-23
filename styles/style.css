@@ -1,0 +1,402 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f7fc;
+  color: #1f2937;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  background-color: #0f172a;
+  color: white;
+  padding: 1.2rem 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.logo span {
+  color: #facc15;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.nav-list a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-list .btn {
+  background-color: #facc15;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+.nav-list .btn:hover {
+  background-color: #eab308;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(120deg, #1e40af, #60a5fa);
+  color: white;
+  padding: 6rem 0 5rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  max-width: 700px;
+  margin-bottom: 1.5rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+.hero-img {
+  width: 320px;
+  animation: float 4s ease-in-out infinite;
+  margin-top: 100px;
+}
+
+/* Seções */
+.quem-somos, .planos {
+  padding: 5rem 1rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 24px;
+  margin: 2rem auto;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
+.quem-somos h2, .planos h2 {
+  font-size: 2rem;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+}
+
+/* Botões */
+.btn-primary, .btn-secondary {
+  background-color: #facc15;
+  color: #0f172a;
+  padding: 0.9rem 2rem;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  display: inline-block;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-secondary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.finalizar {
+  animation: pulse 2.2s infinite;
+}
+
+.btn-secondary.glow {
+  animation: glow 2s infinite alternate;
+}
+
+/* Footer */
+.footer {
+  background-color: #0f172a;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+/* Animações */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px #facc15; }
+  100% { box-shadow: 0 0 24px #facc15; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+/* Login container (para páginas futuras) */
+.login-container {
+  max-width: 420px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  color: #1e3a8a;
+  margin-bottom: 1.2rem;
+}
+
+.login-container input,
+.login-container select {
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+
+.login-container button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-container button:hover {
+  background-color: #2563eb;
+}
+
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.grid.reverse {
+  flex-direction: row-reverse;
+}
+
+.section-img {
+  max-width: 100%;
+  width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+.assinatura {
+  background: linear-gradient(to right, #fff8e1, #f5f3c0);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.assinatura h1 {
+  font-size: 2.5rem;
+  color: #2c2c2c;
+  margin-bottom: 10px;
+}
+
+.sub-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.plano-card {
+  background: #fff;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.plano-card h2 {
+  font-size: 1.8rem;
+  color: #facc15; /* Amarelo */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-pagamento label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.form-pagamento input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.input-group {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group > div {
+  flex: 1;
+}
+
+.finalizar a {
+  display: inline-block;
+  background-color: #ffbb33; /* Amarelo mais forte */
+  color: #fff;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.finalizar a:hover {
+  background-color: #f8a500;
+}
+
+.garantia {
+  font-size: 0.85rem;
+  text-align: center;
+  color: #777;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .input-group {
+    flex-direction: column;
+  }
+
+  .plano-card {
+    padding: 30px 20px;
+  }
+
+  .assinatura h1 {
+    font-size: 2rem;
+  }
+}
+
+
+.sucesso {
+  background: linear-gradient(to right, #fff9c4, #fff59d);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.sucesso h1 {
+  font-size: 2.5rem;
+  color: #2c2c2c;
+  margin-bottom: 15px;
+}
+
+.sucesso p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  background-color: #fbc02d;
+  color: #fff;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 200px;
+  transition: background 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #f9a825;
+}
+
+@media (max-width: 600px) {
+  .sucesso h1 {
+    font-size: 2rem;
+  }
+  
+  .sucesso p {
+    font-size: 1rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Matemática - Intel Kids</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #e0f2ff;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #0d0aaf, #1291c4);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #ffffff;
+      text-shadow: 2px 2px #0011ff;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+        color: white;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #002bec;
+      border: 2px solid #0400ff;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color blue 0.3s, transform 0.2s;
+    }
+
+    .back-home:hover {
+      background-color: #00e1ff;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      text-align: center;
+    }
+
+    #pergunta {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #opcoes button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 15px;
+      font-size: 18px;
+      background-color: #b3d9ff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #opcoes button:hover {
+      background-color: #80c1ff;
+    }
+
+    #telaFinal {
+      display: none;
+    }
+
+    .resultado {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .botao-reiniciar {
+      background-color: #3399ff;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .botao-reiniciar:hover {
+      background-color: #267acc;
+    }
+
+    .voltar {
+      text-decoration: none;
+      color: white;
+      background-color: #0059b3;
+      padding: 10px 20px;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .voltar:hover {
+      background-color: #004080;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <a href="../../games/matematica/index.html" class="back-home">⬅ Voltar</a>
+        <h1>Quiz</h1>
+        <p>Boa Sorte!</p>
+      </header>
+
+  <div class="container">
+    <div id="telaQuiz">
+      <div id="pergunta"></div>
+      <div id="opcoes"></div>
+    </div>
+
+    <div id="telaFinal">
+      <div class="resultado">
+        Você acertou <span id="acertos"></span> de <span id="total"></span> perguntas!
+      </div>
+      <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar Novamente</button><br><br>
+      <a href="index.html" class="voltar">Voltar ao Início</a>
+    </div>
+  </div>
+
+  <script>
+    const perguntasFacil = [
+      { pergunta: "Quanto é 2 + 2?", opcoes: ["3", "4", "5", "6"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 5 + 1?", opcoes: ["4", "5", "6", "7"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 3 + 3?", opcoes: ["5", "6", "7", "8"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 10 - 5?", opcoes: ["6", "4", "5", "3"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 7 - 2?", opcoes: ["4", "5", "6", "3"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 1 + 9?", opcoes: ["10", "11", "8", "9"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 0 + 6?", opcoes: ["6", "7", "5", "4"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 8 - 3?", opcoes: ["6", "5", "4", "3"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 4 + 4?", opcoes: ["7", "8", "9", "6"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 6 - 2?", opcoes: ["3", "4", "5", "2"], respostaCorreta: 1 }
+    ];
+
+    const perguntasMedio = [
+      { pergunta: "Quanto é 5 x 2?", opcoes: ["10", "12", "7", "9"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 9 - 3?", opcoes: ["6", "5", "4", "7"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 4 x 3?", opcoes: ["12", "16", "8", "10"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 18 ÷ 3?", opcoes: ["5", "6", "3", "7"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 6 x 2?", opcoes: ["10", "11", "12", "13"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 8 ÷ 2?", opcoes: ["6", "3", "4", "5"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 10 + 4?", opcoes: ["13", "15", "14", "16"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 15 - 5?", opcoes: ["10", "8", "7", "11"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 9 + 6?", opcoes: ["14", "15", "13", "12"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 12 ÷ 4?", opcoes: ["2", "3", "4", "5"], respostaCorreta: 1 }
+    ];
+
+    const perguntasDificil = [
+      { pergunta: "Quanto é 7 x 6?", opcoes: ["42", "36", "48", "40"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 49 ÷ 7?", opcoes: ["5", "6", "7", "8"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 25 + 17?", opcoes: ["41", "42", "43", "44"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 50 - 28?", opcoes: ["22", "23", "24", "25"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 9 x 9?", opcoes: ["81", "72", "99", "88"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 64 ÷ 8?", opcoes: ["6", "7", "8", "9"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 45 ÷ 5?", opcoes: ["8", "9", "10", "7"], respostaCorreta: 1 },
+      { pergunta: "Quanto é 12 x 3?", opcoes: ["36", "30", "33", "34"], respostaCorreta: 0 },
+      { pergunta: "Quanto é 72 ÷ 9?", opcoes: ["7", "8", "9", "6"], respostaCorreta: 2 },
+      { pergunta: "Quanto é 100 - 55?", opcoes: ["45", "44", "43", "40"], respostaCorreta: 0 }
+    ];
+
+    let perguntas = [...perguntasFacil, ...perguntasMedio, ...perguntasDificil];
+    let indiceAtual = 0;
+    let acertos = 0;
+
+    function mostrarPergunta() {
+      if (indiceAtual < perguntas.length) {
+        const atual = perguntas[indiceAtual];
+        document.getElementById("pergunta").textContent = atual.pergunta;
+
+        const opcoesDiv = document.getElementById("opcoes");
+        opcoesDiv.innerHTML = "";
+        atual.opcoes.forEach((opcao, index) => {
+          const botao = document.createElement("button");
+          botao.textContent = opcao;
+          botao.onclick = () => {
+            if (index === atual.respostaCorreta) acertos++;
+            indiceAtual++;
+            mostrarPergunta();
+          };
+          opcoesDiv.appendChild(botao);
+        });
+      } else {
+        document.getElementById("telaQuiz").style.display = "none";
+        document.getElementById("telaFinal").style.display = "block";
+        document.getElementById("acertos").textContent = acertos;
+        document.getElementById("total").textContent = perguntas.length;
+      }
+    }
+
+    function reiniciarQuiz() {
+      indiceAtual = 0;
+      acertos = 0;
+      document.getElementById("telaFinal").style.display = "none";
+      document.getElementById("telaQuiz").style.display = "block";
+      mostrarPergunta();
+    }
+
+    window.onload = mostrarPergunta;
+  </script>
+</body>
+</html>

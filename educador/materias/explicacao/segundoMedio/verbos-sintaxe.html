@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verbo e Sintaxe da Oração</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Verbo e Sintaxe da Oração</h1>
+
+    <p>O <strong>verbo</strong> é o núcleo do predicado da oração e indica ação, estado, mudança de estado, fenômeno da natureza ou ocorrência.</p>
+
+    <h2>🔹 Função do verbo na oração</h2>
+    <p>O verbo é o <strong>elemento central</strong> da oração. Sem ele, geralmente não há sentido completo.</p>
+    <div class="exemplo">A menina <strong>estuda</strong> para a prova.</div>
+
+    <h2>🔹 Tipos de predicado (baseado no verbo)</h2>
+    <ul>
+      <li><strong>Predicado verbal:</strong> o núcleo é um verbo de ação.  
+        <div class="exemplo">João <strong>correu</strong> muito hoje.</div>
+      </li>
+      <li><strong>Predicado nominal:</strong> o núcleo é um nome, com verbo de ligação.  
+        <div class="exemplo">A garota <strong>está</strong> feliz.</div>
+      </li>
+      <li><strong>Predicado verbo-nominal:</strong> tem dois núcleos: verbo e nome.  
+        <div class="exemplo">O professor <strong>chegou cansado</strong>.</div>
+      </li>
+    </ul>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarExercicios(event)">
+        <ol>
+          <li>
+            Qual é o núcleo do predicado na frase:  
+            <em>“O cachorro latiu alto.”</em>  
+            <input type="text" id="pergunta1" placeholder="Digite o núcleo do predicado">
+          </li>
+          <li>
+            Classifique o tipo de predicado:  
+            <em>“A menina parecia animada.”</em>  
+            <input type="text" id="pergunta2" placeholder="Digite o tipo do predicado">
+          </li>
+          <li>
+            Classifique o tipo de predicado:  
+            <em>“Carlos saiu nervoso.”</em>  
+            <input type="text" id="pergunta3" placeholder="Digite o tipo do predicado">
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+
+  <script>
+    function verificarExercicios(event) {
+      event.preventDefault();
+
+      let resultado = '';
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+
+      if (p1 === 'latiu') {
+        resultado += '<p><strong>1) Correto!</strong> O núcleo é o verbo "latiu".</p>';
+      } else {
+        resultado += '<p><strong>1) Incorreto.</strong> A resposta correta é "latiu".</p>';
+      }
+
+      if (p2 === 'predicado nominal' || p2 === 'nominal') {
+        resultado += '<p><strong>2) Correto!</strong> É um predicado nominal.</p>';
+      } else {
+        resultado += '<p><strong>2) Incorreto.</strong> A resposta correta é "predicado nominal".</p>';
+      }
+
+      if (p3 === 'predicado verbo-nominal' || p3 === 'verbo-nominal') {
+        resultado += '<p><strong>3) Correto!</strong> É um predicado verbo-nominal.</p>';
+      } else {
+        resultado += '<p><strong>3) Incorreto.</strong> A resposta correta é "predicado verbo-nominal".</p>';
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aula Ao Vivo | Intel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/educador/alua-ao-vivo.css">
+</head>
+<body>
+
+  <header>
+    <h1>IntelEduca - Educador</h1>
+    <nav>
+      <a href="home.html">Home</a>
+      <a href="logout.html">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Iniciar Aula Ao Vivo</h2>
+    <div class="live-session">
+      <div class="live-stream">
+        <iframe src="https://www.youtube.com/embed/ID_DO_VIDEO_AO_VIVO" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <!-- Chat de Interação com os Estudantes -->
+      <div class="chat">
+        <div class="chat-header">Chat Ao Vivo</div>
+        <div class="messages" id="messages">
+          <!-- Mensagens serão inseridas aqui -->
+        </div>
+        <div class="input-message">
+          <input type="text" id="messageInput" placeholder="Escreva sua mensagem..." />
+          <button onclick="sendMessage()">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let messages = document.getElementById('messages');
+
+    function sendMessage() {
+      let messageInput = document.getElementById('messageInput');
+      let message = messageInput.value;
+      if (message.trim()) {
+        let newMessage = document.createElement('div');
+        newMessage.classList.add('message', 'educator');
+        newMessage.innerText = message;
+        messages.appendChild(newMessage);
+        messageInput.value = '';
+        messages.scrollTop = messages.scrollHeight; // Scroll down to see the latest message
+      }
+    }
+  </script>
+
+</body>
+</html>

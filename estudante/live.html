@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="stylesheet" href="../styles/live.css">
+  <meta charset="UTF-8">
+  <title>Live com Chat - Intel</title>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">📘 Intel Educa</div>
+    <a href="dashboard-estudante.html">Voltar ao Painel</a>
+  </header>
+
+  <div class="container">
+    <!-- Chat -->
+    <div class="chat">
+      <div class="chat-header">Chat da Live</div>
+      <div class="chat-box" id="chat-box">
+        <div class="message">👩‍🏫 Bem-vindo(a) à Live Intel Educa!</div>
+        <div class="message1">Gabriella Fernandes: Poderia repetir por favor?</div>
+        <div class="message2">Jefferson Alcides: Pitágoras?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="chatInput" placeholder="Digite sua mensagem...">
+        <button onclick="enviarMensagem()">Enviar</button>
+      </div>
+    </div>
+
+    <!-- Vídeo -->
+    <div class="video-section">
+      <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+    </div>
+  </div>
+
+  <script>
+    function enviarMensagem() {
+      const input = document.getElementById("chatInput");
+      const chatBox = document.getElementById("chat-box");
+
+      if (input.value.trim() !== "") {
+        const novaMensagem = document.createElement("div");
+        novaMensagem.className = "message";
+        novaMensagem.textContent = "Você: " + input.value;
+        chatBox.appendChild(novaMensagem);
+        input.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Intel Kids - Matemática</title>
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #f6f8ff, #d0f0ff);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #0d0aaf, #1291c4);
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+      color: #fff;
+      text-shadow: 2px 2px #0011ff;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      font-size: 1.2em;
+      color: #fffbe7;
+    }
+
+    .back-home {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      color: #002bec;
+      border: 2px solid #19cbe2;
+      padding: 8px 16px;
+      border-radius: 15px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color blue 0.3s, transform 0.2s;
+    }
+
+    .back-home:hover {
+      background-color: #14cabb;
+    }
+
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+
+    .game-card {
+      background-color: #ffffff;
+      border-radius: 20px;
+      width: 240px;
+      padding: 20px;
+      box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      text-align: center;
+      text-decoration: none;
+      color: #444;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05);
+      background-color: #e0f9ff;
+    }
+
+    .game-card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.4em;
+      color: #25007c;
+    }
+
+    .game-card p {
+      font-size: 1em;
+      color: #666;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .game-card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="../../index.html" class="back-home">🏠 Início</a>
+    <h1>Jogos de Matemática</h1>
+    <p>Escolha o jogo que você quer jogar:</p>
+  </header>
+
+  <main class="game-container">
+    <a class="game-card" href="soma.html">
+      <h3>Jogo de Soma ➕</h3>
+      <p>Some os números corretamente e ganhe pontos!</p>
+    </a>
+
+    <a class="game-card" href="subtracao.html">
+      <h3>Jogo de Subtração ➖</h3>
+      <p>Resolva as continhas de menos. Você consegue!</p>
+    </a>
+
+    <a class="game-card" href="multiplicacao.html">
+      <h3>Jogo de Multiplicação ✖️</h3>
+      <p>Aprenda a tabuada brincando com desafios!</p>
+    </a>
+
+    <a class="game-card" href="quiz.html">
+      <h3>Quiz Matemático ❓</h3>
+      <p>Teste seus conhecimentos com perguntas divertidas!</p>
+    </a>
+  </main>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Acentuação - Intel Kids</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #fff0f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to right, #d90429, #ef233c);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 2px 2px #000000;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
+            color: white;
+        }
+
+        .back-home {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #fff;
+            color: #000000;
+            border: 2px solid #da1111;
+            padding: 8px 16px;
+            border-radius: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .back-home:hover {
+            background-color: #ffcce0;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            text-align: center;
+        }
+
+        #pergunta {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        #opcoes button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #ff0000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #opcoes button:hover {
+            background-color: rgb(236, 89, 89);
+        }
+
+        #telaFinal {
+            display: none;
+        }
+
+        .resultado {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .botao-reiniciar {
+            background-color: #c70f0f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .botao-reiniciar:hover {
+            background-color: #d12710;
+        }
+
+        .voltar {
+            text-decoration: none;
+            color: white;
+            background-color: #c41515;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .voltar:hover {
+            background-color: #d61d1d;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a class="back-home" href="index.html">Início</a>
+        <h1>Acentuação</h1>
+        <p>Teste seus conhecimentos sobre o uso correto dos acentos!</p>
+    </header>
+
+    <div class="container">
+        <div id="quiz">
+            <div id="pergunta"></div>
+            <div id="opcoes"></div>
+        </div>
+
+        <div id="telaFinal">
+            <div class="resultado" id="resultado"></div>
+            <button class="botao-reiniciar" onclick="reiniciarQuiz()">Tentar novamente</button>
+            <br /><br />
+            <a class="voltar" href="index.html">Voltar para o início</a>
+        </div>
+    </div>
+
+    <script>
+        const perguntas = [
+            {
+                pergunta: "Qual palavra está acentuada corretamente?",
+                opcoes: ["Heroi", "Papel", "Pássaro", "Cafe"],
+                resposta: "Pássaro"
+            },
+            {
+                pergunta: "Qual dessas palavras leva acento agudo?",
+                opcoes: ["Voce", "Você", "Voçê", "Vôce"],
+                resposta: "Você"
+            },
+            {
+                pergunta: "A palavra 'saída' leva acento em qual sílaba?",
+                opcoes: ["Primeira", "Segunda", "Terceira", "Nenhuma"],
+                resposta: "Primeira"
+            },
+            {
+                pergunta: "Complete corretamente: Amanhã é dia de...",
+                opcoes: ["sol", "prova", "fériás", "férias"],
+                resposta: "férias"
+            },
+            {
+                pergunta: "Qual dessas palavras NÃO leva acento?",
+                opcoes: ["Pôde", "Pude", "Pôde", "Pé"],
+                resposta: "Pude"
+            },
+            {
+                pergunta: "Por que usamos acento na palavra 'pôde' (do verbo poder)?",
+                opcoes: [
+                    "Porque está no presente",
+                    "Para diferenciar do 'pode' no presente",
+                    "Porque é uma regra de monossílabos",
+                    "Porque é proparoxítona"
+                ],
+                resposta: "Para diferenciar do 'pode' no presente"
+            },
+            {
+                pergunta: "Qual alternativa está escrita corretamente?",
+                opcoes: ["Jóvem", "Jovêm", "Jovem", "Jóvemm"],
+                resposta: "Jovem"
+            },
+            {
+                pergunta: "A palavra 'país' leva qual tipo de acento?",
+                opcoes: ["Grave", "Agudo", "Circunflexo", "Nenhum"],
+                resposta: "Agudo"
+            },
+            {
+                pergunta: "Qual dessas palavras é proparoxítona e leva acento?",
+                opcoes: ["Árvore", "Professor", "Cidade", "Papéis"],
+                resposta: "Árvore"
+            },
+            {
+                pergunta: "A palavra 'avó' é acentuada para:",
+                opcoes: [
+                    "Indicar plural",
+                    "Distinguir de 'avô'",
+                    "Indicar sílaba tônica",
+                    "Por regra das oxítonas"
+                ],
+                resposta: "Distinguir de 'avô'"
+            }
+        ];
+
+        let indicePergunta = 0;
+        let pontuacao = 0;
+
+        function mostrarPergunta() {
+            const atual = perguntas[indicePergunta];
+            document.getElementById("pergunta").textContent = atual.pergunta;
+
+            const opcoesDiv = document.getElementById("opcoes");
+            opcoesDiv.innerHTML = "";
+
+            atual.opcoes.forEach(opcao => {
+                const botao = document.createElement("button");
+                botao.textContent = opcao;
+                botao.onclick = () => verificarResposta(opcao);
+                opcoesDiv.appendChild(botao);
+            });
+        }
+
+        function verificarResposta(respostaSelecionada) {
+            const respostaCorreta = perguntas[indicePergunta].resposta;
+            if (respostaSelecionada === respostaCorreta) {
+                pontuacao++;
+            }
+
+            indicePergunta++;
+            if (indicePergunta < perguntas.length) {
+                mostrarPergunta();
+            } else {
+                mostrarResultado();
+            }
+        }
+
+        function mostrarResultado() {
+            document.getElementById("quiz").style.display = "none";
+            document.getElementById("telaFinal").style.display = "block";
+            document.getElementById("resultado").textContent =
+                `Você acertou ${pontuacao} de ${perguntas.length} perguntas!`;
+        }
+
+        function reiniciarQuiz() {
+            indicePergunta = 0;
+            pontuacao = 0;
+            document.getElementById("quiz").style.display = "block";
+            document.getElementById("telaFinal").style.display = "none";
+            mostrarPergunta();
+        }
+
+        mostrarPergunta();
+    </script>
+</body>
+
+</html>

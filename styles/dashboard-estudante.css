@@ -1,0 +1,146 @@
+:root {
+        --azul1: #0d47a1;
+        --azul2: #2196f3;
+        --azul3: #e3f2fd;
+        --branco: #ffffff;
+        --cinza: #f4f4f4;
+        --sombra: rgba(0, 0, 0, 0.1);
+      }
+
+      a{
+        text-decoration: none;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+      }
+
+      body {
+        background-color: var(--cinza);
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(90deg, var(--azul1), var(--azul2));
+        color: white;
+        padding: 20px 40px;
+        font-size: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 10px var(--sombra);
+      }
+
+      header .logo {
+        font-weight: bold;
+      }
+
+      header .logout {
+        background-color: white;
+        color: var(--azul1);
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      header .logout:hover {
+        background-color: #ddd;
+      }
+
+      .container {
+        padding: 40px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--azul1);
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .card {
+        background-color: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px var(--sombra);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+      .card h2 {
+        color: var(--azul1);
+        margin-bottom: 10px;
+      }
+
+      .card p {
+        font-size: 15px;
+        color: #555;
+      }
+
+      .progress-bar {
+        height: 8px;
+        border-radius: 4px;
+        background-color: var(--azul3);
+        margin-top: 15px;
+        overflow: hidden;
+      }
+
+      .progress-bar span {
+        display: block;
+        height: 100%;
+        width: 60%;
+        background: var(--azul2);
+      }
+
+      .footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        color: #777;
+      }
+
+      .suporte {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        background-color: var(--azul2);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px var(--sombra);
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .suporte:hover {
+        background-color: var(--azul1);
+      }
+
+      @media screen and (max-width: 768px) {
+        .container {
+          padding: 20px;
+        }
+      }

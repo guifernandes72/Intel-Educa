@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Progressão Temporal</title>
+  <style>
+    :root {
+      --azul1: #0f172a;
+      --azul2: #24355c;
+      --branco: #ffffff;
+      --cinza-claro: #f4f4f4;
+      --cinza-escuro: #333;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: var(--cinza-claro);
+      color: var(--azul1);
+    }
+
+    header {
+      background-color: var(--azul1);
+      color: var(--branco);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logout {
+      background-color: var(--azul2);
+      color: var(--branco);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: var(--branco);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: var(--azul2);
+    }
+
+    .exemplo {
+      background-color: #e0e7ff;
+      padding: 10px;
+      border-left: 4px solid var(--azul2);
+      margin: 10px 0;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin-top: 5px;
+      width: 100%;
+      max-width: 300px;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: var(--azul2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #resultado p {
+      margin: 8px 0;
+    }
+
+    #resultado strong {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">🎓 Intel Educa</div>
+    <a href="../../portugues.html"><button class="logout">Sair</button></a>
+  </header>
+
+  <main>
+    <h1>Pretérito Mais-que-perfeito & Tempos do Futuro</h1>
+
+    <p>Esses tempos verbais ajudam a criar uma <strong>progressão temporal</strong> clara na narrativa. Cada tempo mostra um momento diferente no tempo em relação a outros acontecimentos.</p>
+
+    <h2>📌 Pretérito Mais-que-perfeito</h2>
+    <p>Indica uma ação passada que ocorreu <strong>antes de outra também no passado</strong>.</p>
+    <div class="exemplo">Quando ela chegou, <strong>eu já terminara</strong> o trabalho.</div>
+
+    <h2>📌 Futuro do Presente</h2>
+    <p>Expressa uma ação que ainda <strong>vai acontecer</strong>.</p>
+    <div class="exemplo">Amanhã, <strong>iremos</strong> ao cinema.</div>
+
+    <h2>📌 Futuro do Pretérito</h2>
+    <p>Mostra uma ação que <strong>ocorreria no futuro de um ponto no passado</strong>.</p>
+    <div class="exemplo">Eu <strong>compraria</strong> o ingresso se tivesse dinheiro.</div>
+
+    <h2>🔄 Progressão Temporal:</h2>
+    <ul>
+      <li><strong>Pretérito Mais-que-perfeito:</strong> passado do passado</li>
+      <li><strong>Pretérito Perfeito:</strong> passado concluído</li>
+      <li><strong>Presente:</strong> agora</li>
+      <li><strong>Futuro do Presente:</strong> depois do agora</li>
+      <li><strong>Futuro do Pretérito:</strong> ação futura condicionada ao passado</li>
+    </ul>
+
+    <section class="exercicio">
+      <h2>✍️ Exercícios:</h2>
+      <form onsubmit="verificarExercicios(event)">
+        <ol>
+          <li>
+            Complete com o tempo verbal adequado:
+            <ul>
+              <li>a) Se eu soubesse, ______ (avisar) você ontem.
+                <input type="text" id="pergunta1" placeholder="Digite SOMENTE o verbo" maxlength="20">
+              </li>
+              <li>b) Quando ela chegou, eu já ______ (sair).
+                <input type="text" id="pergunta2" placeholder="Digite SOMENTE o verbo" maxlength="20">
+              </li>
+              <li>c) Amanhã, nós ______ (viajar) cedo.
+                <input type="text" id="pergunta3" placeholder="Digite SOMENTE o verbo" maxlength="20">
+              </li>
+              <li>d) Eu ______ (ajudar) se tivesse sido chamado.
+                <input type="text" id="pergunta4" placeholder="Digite SOMENTE o verbo" maxlength="20">
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <button type="submit">Verificar Respostas</button>
+      </form>
+
+      <div id="resultado" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+
+  <script>
+    function verificarExercicios(event) {
+      event.preventDefault();
+
+      let resultado = '';
+
+      const p1 = document.getElementById('pergunta1').value.trim().toLowerCase();
+      const p2 = document.getElementById('pergunta2').value.trim().toLowerCase();
+      const p3 = document.getElementById('pergunta3').value.trim().toLowerCase();
+      const p4 = document.getElementById('pergunta4').value.trim().toLowerCase();
+
+      // Verificações
+      if (p1 === 'avisaria') {
+        resultado += '<p><strong>1a) Correto!</strong> "Avisaria" está no futuro do pretérito.</p>';
+      } else {
+        resultado += '<p><strong>1a) Incorreto.</strong> A resposta correta é "avisaria".</p>';
+      }
+
+      if (p2 === 'saíra') {
+        resultado += '<p><strong>1b) Correto!</strong> "Saíra" está no pretérito mais-que-perfeito.</p>';
+      } else {
+        resultado += '<p><strong>1b) Incorreto.</strong> A resposta correta é "saíra".</p>';
+      }
+
+      if (p3 === 'viajaremos') {
+        resultado += '<p><strong>1c) Correto!</strong> "Viajaremos" está no futuro do presente.</p>';
+      } else {
+        resultado += '<p><strong>1c) Incorreto.</strong> A resposta correta é "viajaremos".</p>';
+      }
+
+      if (p4 === 'ajudaria') {
+        resultado += '<p><strong>1d) Correto!</strong> "Ajudaria" está no futuro do pretérito.</p>';
+      } else {
+        resultado += '<p><strong>1d) Incorreto.</strong> A resposta correta é "ajudaria".</p>';
+      }
+
+      document.getElementById('resultado').innerHTML = resultado;
+    }
+  </script>
+
+</body>
+</html>
